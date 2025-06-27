@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alvin Immanuel - Portfolio</title>
     <link rel="stylesheet" href="./static/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
    
 </head>
 <body>
@@ -14,8 +18,8 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#" class="brand">
-                <span class="highlight">U</span>nam
+            <a href="#" class="brand">U
+                <span class="highlight">nam</span>
             </a>
             <ul class="nav-links">
                 <li><a href="#about">About Me</a></li>
@@ -37,13 +41,13 @@
             <div class="hero-visual">
                 <div class="hero-image-container">
                     <div class="hero-image" 
-                    style="background: var(--gradient-1);
+                    style="background: url('./static/img/hero.png') no-repeat center center, var(--gradient-1);
+                           background-size: cover;
                            display: flex; 
                            align-items: center;
                            justify-content: center;
                            font-size: 2rem;
-                           color: white;
-                           background-image: url(static/img/manu4.jpg);"></div>
+                           color: white;"></div>
                     <div class="floating-cards">
                         <div class="floating-card"></div>
                         <div class="floating-card"></div>
@@ -59,19 +63,23 @@
         <div class="about-container">
             <div class="about-images">
                 <div class="image-grid">
-                    <div class="about-img" style="background: var(--gradient-1);"></div>
-                    <div class="about-img" style="background: var(--gradient-2);"></div>
-                    <div class="about-img" style="background: var(--gradient-3);"></div>
-                    <div class="about-img" style="background: var(--gradient-1);"></div>
+                    <div class="about-img" style="background: url('./static/img/manu1.jpg') no-repeat center center, var(--gradient-1);
+                    background-size: cover;"></div>
+                    <div class="about-img" style="background: url('./static/img/manu2.jpg') no-repeat center center, var(--gradient-2);
+                    background-size: cover;"></div>
+                    <div class="about-img" style="background: url('./static/img/manu3.jpg') no-repeat center center, var(--gradient-3);
+                    background-size: cover;"></div>
+                    <div class="about-img" style="background: url('./static/img/manu4.jpg') no-repeat center center, var(--gradient-1);
+                    background-size: cover;"></div>
                 </div>
                 <div class="main-image"
-                 style="background: var(--gradient-2);
+                 style="background: url('./static/img/manu5.JPG') no-repeat center center, var(--gradient-2);
+                       background-size: cover;
                         display: flex; 
                         align-items: center;
                         justify-content: center; 
                         color: white; 
-                        font-weight: bold;
-                        background-image: url(static/img/manu4.jpg);"></div>
+                        font-weight: bold;"></div>
             </div>
             <div class="about-content">
                 <h2>Who <span style="color: var(--primary-color);">Am I</span>?</h2>
@@ -124,20 +132,21 @@
             </div>
 
             <div class="tools-cloud">
-                <span class="tool-tag">HTML</span>
-                <span class="tool-tag">CSS</span>
-                <span class="tool-tag">JavaScript</span>
-                <span class="tool-tag">Node.js</span>
-                <span class="tool-tag">Python</span>
-                <span class="tool-tag">Flask</span>
-                <span class="tool-tag">MongoDB</span>
-                <span class="tool-tag">PostgreSQL</span>
-                <span class="tool-tag">Ruby</span>
-                <span class="tool-tag">C++</span>
-                <span class="tool-tag">C</span>
-                <span class="tool-tag">Arduino</span>
-                <span class="tool-tag">Blender</span>
-            </div>
+                <span class="tool-tag"><i class="devicon-html5-plain colored"></i> HTML</span>
+                <span class="tool-tag"><i class="devicon-css3-plain colored"></i> CSS</span>
+                <span class="tool-tag"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
+                <span class="tool-tag"><i class="devicon-nodejs-plain colored"></i> Node.js</span>
+                <span class="tool-tag"><i class="devicon-python-plain colored"></i> Python</span>
+                <span class="tool-tag"><i class="devicon-flask-original colored"></i> Flask</span>
+                <span class="tool-tag"><i class="devicon-mongodb-plain colored"></i> MongoDB</span>
+                <span class="tool-tag"><i class="devicon-postgresql-plain colored"></i> PostgreSQL</span>
+                <span class="tool-tag"><i class="devicon-ruby-plain colored"></i> Ruby</span>
+                <span class="tool-tag"><i class="devicon-cplusplus-plain colored"></i> C++</span>
+                <span class="tool-tag"><i class="devicon-c-plain colored"></i> C</span>
+                <span class="tool-tag"><i class="devicon-arduino-plain colored"></i> Arduino</span>
+                <span class="tool-tag"><i class="devicon-blender-original colored"></i> Blender</span>
+           </div>
+
         </div>
     </section>
 
@@ -151,7 +160,9 @@
             
             <div class="projects-grid">
                 <div class="project-card">
-                    <div class="project-image"></div>
+                    <div class="project-image" 
+                    style="background: url('./static/img/aivana.png') no-repeat center center;
+                    background-size: cover;"></div>
                     <div class="project-content">
                         <h3>AiVana SaaS App</h3>
                         <p>An intelligent SaaS application that streamlines HR processes and employee monitoring with advanced AI capabilities.</p>
@@ -160,7 +171,9 @@
                 </div>
                 
                 <div class="project-card">
-                    <div class="project-image"></div>
+                    <div class="project-image" 
+                    style="background: url('./static/img/calculator.png') no-repeat center center;
+                    background-size: cover;"></div>
                     <div class="project-content">
                         <h3>Lit Calculator App</h3>
                         <p>A modern, feature-rich calculator application with advanced mathematical functions and intuitive design.</p>
@@ -169,7 +182,9 @@
                 </div>
                 
                 <div class="project-card">
-                    <div class="project-image"></div>
+                    <div class="project-image"
+                     style="background: url('./static/img/shakeup-kitchen.png') no-repeat center center;
+                    background-size: cover;"></div>
                     <div class="project-content">
                         <h3>Shake-Up Kitchen App</h3>
                         <p>A comprehensive restaurant management system that boosted business operations and customer engagement.</p>
@@ -187,11 +202,20 @@
                 <h2>Contact <span style="color: var(--primary-color);">Me</span></h2>
                 <p>Ready to bring your ideas to life? Let's collaborate and create something amazing together. I'm always excited to work on new projects and challenges.</p>
                 <div class="social-links">
-                    <a href="#" class="social-link">📧</a>
-                    <a href="#" class="social-link">💼</a>
-                    <a href="#" class="social-link">🐙</a>
-                    <a href="#" class="social-link">📱</a>
-                </div>
+  <a href="mailto:youremail@example.com" class="social-link" title="Email">
+    <i class="fas fa-envelope"></i>
+  </a>
+  <a href="https://www.linkedin.com/in/yourprofile" class="social-link" title="LinkedIn" target="_blank">
+    <i class="fab fa-linkedin"></i>
+  </a>
+  <a href="https://github.com/yourusername" class="social-link" title="GitHub" target="_blank">
+    <i class="fab fa-github"></i>
+  </a>
+  <a href="https://t.me/yourtelegram" class="social-link" title="Telegram" target="_blank">
+    <i class="fab fa-telegram"></i>
+  </a>
+</div>
+
             </div>
             
             <form class="contact-form">

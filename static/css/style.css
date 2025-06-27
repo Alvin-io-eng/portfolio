@@ -336,13 +336,13 @@
             width: 100%;
             height: 200px;
             object-fit: cover;
-            border-radius: 15px;
-            /* animation: rotate 20s linear infinite; */
+            border-radius: 50%;
+            animation: rotate 20s linear alternate;
         }
 
         @keyframes rotate {
             0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            100% { transform: rotate(210deg); }
         }
 
         .about-content h2 {
@@ -464,6 +464,8 @@
             margin-top: 3rem;
         }
 
+        
+
         .tool-tag {
             background: rgba(128, 195, 253, 0.1);
             color: var(--primary-color);
@@ -473,6 +475,10 @@
             border: 1px solid rgba(128, 195, 253, 0.2);
             transition: all 0.3s ease;
             cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin: 4px;
         }
 
         .tool-tag:hover {
