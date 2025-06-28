@@ -337,7 +337,7 @@
             height: 200px;
             object-fit: cover;
             border-radius: 50%;
-            animation: rotate 20s linear alternate;
+            animation: 20s linear alternate;
         }
 
         @keyframes rotate {
@@ -621,6 +621,7 @@
             color: var(--primary-color);
             transition: all 0.3s ease;
             border: 2px solid rgba(128, 195, 253, 0.2);
+            font-size: 15px;
         }
 
         .social-link:hover {
