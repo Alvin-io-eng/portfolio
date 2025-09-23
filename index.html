@@ -5,12 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alvin Immanuel - Portfolio</title>
     <link rel="icon" href="./static/img/monogram-hq.png" sizes="32x32" type="image/png">
-    <link rel="stylesheet" href="./static/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-
-   
+    <link rel="stylesheet" href="./static/css/style.css">
 </head>
 <body>
     <!-- Background Particles -->
@@ -151,7 +148,7 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Projects Section - Carousel -->
     <section class="projects scroll-animate" id="projects">
         <div class="projects-container">
             <div class="projects-header">
@@ -159,39 +156,27 @@
                 <p style="color: var(--text-muted); font-size: 1.2rem;">Here are some of the amazing projects I've worked on</p>
             </div>
             
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image" 
-                    style="background: url('./static/img/aivana.png') no-repeat center center;
-                    background-size: cover;"></div>
-                    <div class="project-content">
-                        <h3>AiVana SaaS App</h3>
-                        <p>An intelligent SaaS application that streamlines HR processes and employee monitoring with advanced AI capabilities.</p>
-                        <a href="https://aivanawebsite.vercel.app/" class="project-link">View Project</a>
-                    </div>
+            <div class="projects-carousel">
+                <div class="carousel-container" id="carousel-container">
+                    <!-- Project cards will be dynamically inserted here -->
                 </div>
                 
-                <div class="project-card">
-                    <div class="project-image" 
-                    style="background: url('./static/img/calculator.png') no-repeat center center;
-                    background-size: cover;"></div>
-                    <div class="project-content">
-                        <h3>Lit Calculator App</h3>
-                        <p>A modern, feature-rich calculator application with advanced mathematical functions and intuitive design.</p>
-                        <a href="#" class="project-link">View Project</a>
-                    </div>
+                <div class="carousel-nav">
+                    <button class="carousel-btn" id="prev-btn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn" id="next-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
                 
-                <div class="project-card">
-                    <div class="project-image"
-                     style="background: url('./static/img/shakeup-kitchen.png') no-repeat center center;
-                    background-size: cover;"></div>
-                    <div class="project-content">
-                        <h3>Shake-Up Kitchen App</h3>
-                        <p>A comprehensive restaurant management system that boosted business operations and customer engagement.</p>
-                        <a href="https://shakeup-kitchen.vercel.app" class="project-link">View Project</a>
-                    </div>
+                <div class="carousel-dots" id="carousel-dots">
+                    <!-- Dots will be dynamically inserted here -->
                 </div>
+            </div>
+            
+            <div class="see-more-container">
+                <a href="projects.html" class="see-more-btn">See All Projects</a>
             </div>
         </div>
     </section>
@@ -212,20 +197,10 @@
                     <a href="https://github.com/Alvin-io-eng" class="social-link" title="GitHub" target="_blank">
                        <i class="fab fa-github"></i>
                     </a>
-               <!-- <a href="https://t.me/yourtelegram" class="social-link" title="Telegram" target="_blank">
-                       <i class="fab fa-telegram"></i>
-                    </a> -->
                     <a href="https://wa.me/254728902689?text=Hello%20Alvin%2C%20I%27m%20interested%20in%20your%20services" 
                          class="social-link" title="WhatsApp" target="_blank">
                         <i class="fab fa-whatsapp"></i>
                     </a>
-                    <!-- <a href="https://wa.me/254728902689" class="social-link" title="WhatsApp" target="_blank">
-                                <i class="fab fa-whatsapp"></i>
-                         </a>
-                     -->
-               <!-- <a href="https://x.com/alvinouma401" class="social-link" title="Twitter" target="_blank">
-                       <i class="fab fa-twitter"></i>
-                    </a> -->
                 </div>
 
             </div>
@@ -248,8 +223,9 @@
     <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2025 Designed by A.Israel and Developed by A.Immanuel . All rights reserved.</p>
+    
     </footer>
-
     <script src="./static/js/main.js"></script>
+    
 </body>
 </html>

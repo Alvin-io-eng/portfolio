@@ -1,0 +1,22 @@
+{
+  "projects": [
+    {
+      "title": "AiVana SaaS App",
+      "description": "An intelligent SaaS application that streamlines HR processes and employee monitoring with advanced AI capabilities.",
+      "image": "./static/img/aivana.png",
+      "link": "https://aivanawebsite.vercel.app/"
+    },
+    {
+      "title": "Lit Calculator App",
+      "description": "A modern, feature-rich calculator application with advanced mathematical functions and intuitive design.",
+      "image": "./static/img/calculator.png",
+      "link": "#"
+    },
+    {
+      "title": "Shake-Up Kitchen App",
+      "description": "A comprehensive restaurant management system that boosted business operations and customer engagement.",
+      "image": "./static/img/shakeup-kitchen.png",
+      "link": "https://shakeup-kitchen.vercel.app"
+    }
+  ]
+}
