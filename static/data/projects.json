@@ -23,6 +23,12 @@
       "description": "A visually stunning portfolio website built with Three.js to showcase 3D graphics and interactive elements.",
       "image": "./static/img/threejs-portfolio.png",
       "link": "https://threejs-techwebsite.vercel.app/"
+    },
+    {
+      "title": "Premier Motors",
+      "description": "A basic car dealership website demonstrating vehicle listings and customer inquiries.",
+      "image": "./static/img/premier-motors.png",
+      "link": "https://car-dealership-demo-zxkp.bolt.host/"
     }
   ]
 }

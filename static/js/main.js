@@ -164,24 +164,24 @@ async function loadProjects() {
                 image: "./static/img/shakeup-kitchen.png",
                 link: "https://shakeup-kitchen.vercel.app"
             },
-            {
-                title: "Portfolio Website",
-                description: "A sleek and inexpensive personal portfolio to showcase projects and skills with a modern UI.",
-                image: "./static/img/portfolio.png",
-                link: "#"
-            },
-            {
-                title: "E-Commerce Store",
-                description: "A fully functional online store with cart, checkout, and payment integrations.",
-                image: "./static/img/ecommerce.png",
-                link: "#"
-            },
-            {
-                title: "Task Manager App",
-                description: "A productivity tool that helps users manage tasks, deadlines, and priorities efficiently.",
-                image: "./static/img/taskmanager.png",
-                link: "#"
-            }
+            // {
+            //     title: "Portfolio Website",
+            //     description: "A sleek and inexpensive personal portfolio to showcase projects and skills with a modern UI.",
+            //     image: "./static/img/portfolio.png",
+            //     link: "#"
+            // },
+            // {
+            //     title: "E-Commerce Store",
+            //     description: "A fully functional online store with cart, checkout, and payment integrations.",
+            //     image: "./static/img/ecommerce.png",
+            //     link: "#"
+            // },
+            // {
+            //     title: "Task Manager App",
+            //     description: "A productivity tool that helps users manage tasks, deadlines, and priorities efficiently.",
+            //     image: "./static/img/taskmanager.png",
+            //     link: "#"
+            // }
         ];
         
         if (window.location.pathname.includes('projects.html')) {
