@@ -390,6 +390,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initToolTags();
     initContactForm();
     initTypingEffect();
+    initCarousel();
     initParallaxEffect();
     initHoverEffects();
     
