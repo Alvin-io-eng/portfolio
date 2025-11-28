@@ -70,31 +70,111 @@ function initToolTags() {
     });
 }
 
-// Form submission with animation
+// Form submission with Formspree
 function initContactForm() {
     const form = document.querySelector('.contact-form');
     if (form) {
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
             const submitBtn = this.querySelector('.submit-btn');
             const originalText = submitBtn.textContent;
             
+            // Show loading state
             submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
             submitBtn.style.background = 'var(--accent-color)';
+            submitBtn.style.cursor = 'not-allowed';
             
-            // Simulate form submission
-            setTimeout(() => {
-                submitBtn.textContent = 'Message Sent! ✓';
-                submitBtn.style.background = '#4CAF50';
+            try {
+                // Submit to Formspree
+                const formData = new FormData(this);
                 
+                const response = await fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Success
+                    submitBtn.textContent = 'Message Sent! ✓';
+                    submitBtn.style.background = '#4CAF50';
+                    this.reset();
+                    
+                    // Show success message
+                    showFormMessage('Thank you! Your message has been sent successfully.', 'success');
+                    
+                    // Reset button after 3 seconds
+                    setTimeout(() => {
+                        submitBtn.textContent = originalText;
+                        submitBtn.style.background = '';
+                        submitBtn.disabled = false;
+                        submitBtn.style.cursor = 'pointer';
+                    }, 3000);
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                // Error handling
+                submitBtn.textContent = 'Error - Try Again';
+                submitBtn.style.background = '#f44336';
+                showFormMessage('Sorry, there was an error sending your message. Please try again.', 'error');
+                
+                // Reset button after 3 seconds
                 setTimeout(() => {
                     submitBtn.textContent = originalText;
                     submitBtn.style.background = '';
-                    form.reset();
-                }, 2000);
-            }, 1500);
+                    submitBtn.disabled = false;
+                    submitBtn.style.cursor = 'pointer';
+                }, 3000);
+                
+                console.error('Form submission error:', error);
+            }
         });
     }
+}
+
+// Helper function to show form messages
+function showFormMessage(message, type) {
+    // Remove existing message if any
+    const existingMessage = document.querySelector('.form-message');
+    if (existingMessage) {
+        existingMessage.remove();
+    }
+    
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `form-message ${type}`;
+    messageDiv.textContent = message;
+    messageDiv.style.cssText = `
+        margin-top: 15px;
+        padding: 12px 16px;
+        border-radius: 8px;
+        font-weight: 500;
+        text-align: center;
+        animation: fadeInUp 0.5s ease;
+    `;
+    
+    if (type === 'success') {
+        messageDiv.style.background = 'rgba(76, 175, 80, 0.1)';
+        messageDiv.style.color = '#4CAF50';
+        messageDiv.style.border = '1px solid #4CAF50';
+    } else {
+        messageDiv.style.background = 'rgba(244, 67, 54, 0.1)';
+        messageDiv.style.color = '#f44336';
+        messageDiv.style.border = '1px solid #f44336';
+    }
+    
+    const form = document.querySelector('.contact-form');
+    form.appendChild(messageDiv);
+    
+    // Auto remove after 5 seconds
+    setTimeout(() => {
+        if (messageDiv.parentNode) {
+            messageDiv.remove();
+        }
+    }, 5000);
 }
 
 // Typing effect for hero section
