@@ -3,237 +3,338 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alvin Immanuel - Portfolio</title>
+    <title>Alvin Immanuel - Cyberpunk Portfolio</title>
     <link rel="icon" href="./static/img/monogram-hq.png" sizes="32x32" type="image/png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="./static/css/style.css">
 </head>
 <body>
-    <!-- Background Particles -->
-    <div class="particles" id="particles"></div>
- 
+    <!-- Animated Background Elements -->
+    <div class="background-container">
+        <div class="gradient-orb gradient-orb-1"></div>
+        <div class="gradient-orb gradient-orb-2"></div>
+        <div class="gradient-orb gradient-orb-3"></div>
+        <div class="noise-texture"></div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#" class="brand">
-                <span class="highlight">O</span>uma
+                <span class="brand-highlight">A</span>lvin
             </a>
             <ul class="nav-links">
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#skills">My Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1>Hello,<br>I'm <span style="color: var(--primary-color);">Alvin</span></h1>
-                <p class="subtitle">Telecommunication Engineer, Fullstack Developer & SaaS Entrepreneur</p>
-                <a href="#contact" class="cta-button">Let's Get In Touch</a>
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-prefix">Welcome to my digital space</div>
+                <h1 class="hero-title">
+                    <span class="word">I'm</span>
+                    <span class="word">Alvin</span>
+                    <span class="word">Immanuel</span>
+                </h1>
+                <p class="hero-subtitle">Telecom Engineer • Full-Stack Developer • SaaS Entrepreneur</p>
+                <div class="hero-ctas">
+                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                    <a href="#projects" class="btn btn-secondary">View Work</a>
+                </div>
+                <div class="hero-scroll">
+                    <div class="scroll-indicator">
+                        <span>Scroll to explore</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M10 16V4M10 16L4 10M10 16L16 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
             </div>
             <div class="hero-visual">
-                <div class="hero-image-container">
-                    <div class="hero-image" 
-                    style="background: url('./static/img/hero.png') no-repeat center center, var(--gradient-1);
-                           background-size: cover;
-                           display: flex; 
-                           align-items: center;
-                           justify-content: center;
-                           font-size: 2rem;
-                           color: white;"></div>
-                    <div class="floating-cards">
-                        <div class="floating-card"></div>
-                        <div class="floating-card"></div>
-                        <div class="floating-card"></div>
-                    </div>
+                <div class="floating-orb">
+                    <div class="orb-inner"></div>
+                    <div class="orb-glow"></div>
+                </div>
+                <div class="floating-element floating-element-1"></div>
+                <div class="floating-element floating-element-2"></div>
+                <div class="floating-element floating-element-3"></div>
+                <div class="hero-profile-image">
+                    <img src="./static/img/hero.png" alt="Alvin Immanuel">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section class="about scroll-animate" id="about">
-        <div class="about-container">
-            <div class="about-images">
-                <div class="image-grid">
-                    <div class="about-img" style="background: url('./static/img/manu1.jpg') no-repeat center center, var(--gradient-1);
-                    background-size: cover;"></div>
-                    <div class="about-img" style="background: url('./static/img/manu2.jpg') no-repeat center center, var(--gradient-2);
-                    background-size: cover;"></div>
-                    <div class="about-img" style="background: url('./static/img/manu3.jpg') no-repeat center center, var(--gradient-3);
-                    background-size: cover;"></div>
-                    <div class="about-img" style="background: url('./static/img/manu4.jpg') no-repeat center center, var(--gradient-1);
-                    background-size: cover;"></div>
-                </div>
-                <div class="main-image"
-                 style="background: url('./static/img/manu5.JPG') no-repeat center center, var(--gradient-2);
-                       background-size: cover;
-                        display: flex; 
-                        align-items: center;
-                        justify-content: center; 
-                        color: white; 
-                        font-weight: bold;"></div>
+    <section class="about" id="about">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <div class="title-underline"></div>
             </div>
+            
             <div class="about-content">
-                <h2>Who <span style="color: var(--primary-color);">Am I</span>?</h2>
-                <p>My full name is Alvin Immanuel, a passionate fullstack web app developer and designer. I am conversant with both front-end and back-end programming languages, but I have specialized mainly in the backend part.</p>
-                <p>I am currently studying electrical and electronics engineering, and plan to major in telecommunication engineering thereafter.</p>
-                <p>I am passionate about entrepreneurship and solving problems - it's kind of in my blood. I have created around 3 SaaS products so far which are doing really well.</p>
-                <p>Doing all this in my early 20s is an achievement to me and an indication that I am yet to accomplish more than I could ever imagine.</p>
+                <div class="about-text">
+                    <p class="about-paragraph">
+                        I'm a <span class="highlight">Telecommunications Engineer</span> with a passion for building scalable digital solutions. My journey spans from telecom infrastructure to full-stack web development, and now I'm building <span class="highlight">innovative SaaS products</span> that solve real business problems.
+                    </p>
+                    <p class="about-paragraph">
+                        I believe in crafting experiences that are not just functional, but beautiful. Every project is an opportunity to blend technical excellence with exceptional design, creating products that users love.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">5+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">20+</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Client Satisfaction</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="glass-panel">
+                        <div class="panel-content">
+                            <i class="fas fa-code"></i>
+                            <h3>Creative Problem Solver</h3>
+                            <p>Turning complex challenges into elegant solutions</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section class="skills scroll-animate" id="skills">
-        <div class="skills-container">
-            <div class="skills-header">
-                <h2>Skills <span style="color: var(--text-light);">and</span> <span style="color: var(--primary-color);">Tools</span></h2>
-                <p style="color: var(--text-muted); font-size: 1.2rem;">I have a vast collection of software skills that I have acquired and practiced nearly all my life</p>
+    <section class="skills" id="skills">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Tech Stack</h2>
+                <div class="title-underline"></div>
             </div>
             
             <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Development</h3>
-                    <ul class="skill-list">
-                        <li>Front-end Development</li>
-                        <li>Backend Development</li>
-                        <li>Full-stack Applications</li>
-                        <li>API Development</li>
-                    </ul>
+                <div class="skill-card">
+                    <h3>Frontend</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="devicon-react-original colored"></i>
+                            <span>React</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-nextjs-original colored"></i>
+                            <span>Next.js</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-typescript-original colored"></i>
+                            <span>TypeScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-tailwindcss-original colored"></i>
+                            <span>Tailwind</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-threejs-original colored"></i>
+                            <span>Three.js</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-javascript-original colored"></i>
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="skill-category">
-                    <h3>Technology & AI</h3>
-                    <ul class="skill-list">
-                        <li>AI and Machine Learning</li>
-                        <li>Software Solutions</li>
-                        <li>System Architecture</li>
-                        <li>Database Design</li>
-                    </ul>
+                <div class="skill-card">
+                    <h3>Backend</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="devicon-nodejs-plain colored"></i>
+                            <span>Node.js</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-express-original colored"></i>
+                            <span>Express</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-python-original colored"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-mongodb-original colored"></i>
+                            <span>MongoDB</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-postgresql-original colored"></i>
+                            <span>PostgreSQL</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-redis-original colored"></i>
+                            <span>REST APIs</span>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="skill-category">
-                    <h3>Business & Creative</h3>
-                    <ul class="skill-list">
-                        <li>Entrepreneurship</li>
-                        <li>Team Building</li>
-                        <li>Animation</li>
-                        <li>Problem Solving</li>
-                    </ul>
+                <div class="skill-card">
+                    <h3>Tools & DevOps</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="devicon-git-original colored"></i>
+                            <span>Git</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-docker-original colored"></i>
+                            <span>Docker</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-amazonwebservices-original colored"></i>
+                            <span>AWS</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-vercel-original colored"></i>
+                            <span>Vercel</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-firebase-original colored"></i>
+                            <span>Firebase</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-github-original colored"></i>
+                            <span>GitHub</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-card">
+                    <h3>Design & UX</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="devicon-figma-original colored"></i>
+                            <span>Figma</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-xd-original colored"></i>
+                            <span>UI/UX Design</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="devicon-framer-original colored"></i>
+                            <span>Animation</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-tachometer-alt" style="color: #ff6b35;"></i>
+                            <span>Performance</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-universal-access" style="color: #ff6b35;"></i>
+                            <span>Accessibility</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-mobile-alt" style="color: #ff6b35;"></i>
+                            <span>Responsive</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div class="tools-cloud">
-                <span class="tool-tag"><i class="devicon-html5-plain colored"></i> HTML</span>
-                <span class="tool-tag"><i class="devicon-css3-plain colored"></i> CSS</span>
-                <span class="tool-tag"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
-                <span class="tool-tag"><i class="devicon-nodejs-plain colored"></i> Node.js</span>
-                <span class="tool-tag"><i class="devicon-python-plain colored"></i> Python</span>
-                <span class="tool-tag"><i class="devicon-flask-original colored"></i> Flask</span>
-                <span class="tool-tag"><i class="devicon-mongodb-plain colored"></i> MongoDB</span>
-                <span class="tool-tag"><i class="devicon-postgresql-plain colored"></i> PostgreSQL</span>
-                <span class="tool-tag"><i class="devicon-ruby-plain colored"></i> Ruby</span>
-                <span class="tool-tag"><i class="devicon-cplusplus-plain colored"></i> C++</span>
-                <span class="tool-tag"><i class="devicon-c-plain colored"></i> C</span>
-                <span class="tool-tag"><i class="devicon-arduino-plain colored"></i> Arduino</span>
-                <span class="tool-tag"><i class="devicon-blender-original colored"></i> Blender</span>
-           </div>
-
         </div>
     </section>
 
-    <!-- Projects Section - Carousel -->
-    <section class="projects scroll-animate" id="projects">
-        <div class="projects-container">
-            <div class="projects-header">
-                <h2>My <span style="color: var(--primary-color);">Projects</span></h2>
-                <p style="color: var(--text-muted); font-size: 1.2rem;">Here are some of the amazing projects I've worked on</p>
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="title-underline"></div>
             </div>
             
-            <div class="projects-carousel">
-                <div class="carousel-container" id="carousel-container">
-                    <!-- Project cards will be dynamically inserted here -->
+            <div class="carousel-container">
+                <div class="projects-carousel">
+                    <div class="projects-grid" id="projectsGrid">
+                        <!-- Projects will be loaded dynamically from projects.json -->
+                    </div>
                 </div>
-                
-                <div class="carousel-nav">
-                    <button class="carousel-btn" id="prev-btn">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="carousel-btn" id="next-btn">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-                
-                <div class="carousel-dots" id="carousel-dots">
-                    <!-- Dots will be dynamically inserted here -->
-                </div>
+                <button class="carousel-nav carousel-nav-prev" id="prevBtn" aria-label="Previous project">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-nav carousel-nav-next" id="nextBtn" aria-label="Next project">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
             
-            <div class="see-more-container">
-                <a href="projects.html" class="see-more-btn">See All Projects</a>
-            </div>
+            <div class="carousel-indicators" id="carouselIndicators"></div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="contact scroll-animate" id="contact">
-        <div class="contact-container">
-            <div class="contact-info">
-                <h2>Contact <span style="color: var(--primary-color);">Me</span></h2>
-                <p>Ready to bring your ideas to life? Let's collaborate and create something amazing together. I'm always excited to work on new projects and challenges.</p>
-                <div class="social-links">
-                    <a href="mailto:alvinouma401@gmail.com" class="social-link" title="Email">
-                       <i class="fas fa-envelope"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/alvin-ouma-5190a0271" class="social-link" title="LinkedIn" target="_blank">
-                       <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://github.com/Alvin-io-eng" class="social-link" title="GitHub" target="_blank">
-                       <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://wa.me/254728902689?text=Hello%20Alvin%2C%20I%27m%20interested%20in%20your%20services" 
-                         class="social-link" title="WhatsApp" target="_blank">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                </div>
-
+    <section class="contact" id="contact">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Let's Connect</h2>
+                <div class="title-underline"></div>
             </div>
             
-            <form class="contact-form" action="https://formspree.io/f/mdkrwpzk" method="POST">
-                <div class="form-group">
-                    <input type="text" name="name" placeholder="Your Name" required>
+            <div class="contact-content">
+                <div class="contact-text">
+                    <p>I'm always interested in hearing about new projects and opportunities. Feel free to reach out if you'd like to collaborate!</p>
                 </div>
-                <div class="form-group">
-                    <input type="email" name="email" placeholder="Your Email" required>
+                
+                <form class="contact-form" id="contactForm" action="https://formspree.io/f/mdkrwpzk" method="POST">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" name="name" required>
+                        <span class="form-border"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" name="email" required>
+                        <span class="form-border"></span>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" name="message" rows="5" required></textarea>
+                        <span class="form-border"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-large">Send Message</button>
+                </form>
+                
+                <div class="contact-links">
+                    <a href="mailto:alvinouma401@gmail.com" class="contact-link">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/alvin-ouma-5190a0271" target="_blank" class="contact-link">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/Alvin-io-eng" target="_blank" class="contact-link">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://wa.me/254728902689?text=Hello%20Alvin%2C%20I%27m%20interested%20in%20your%20services" target="_blank" class="contact-link">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>WhatsApp</span>
+                    </a>
                 </div>
-                <div class="form-group">
-                    <input type="text" name="_subject" placeholder="Subject" required>
-                </div>
-                <div class="form-group">
-                    <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
-                </div>
-                <!-- Optional: Redirect to a thank you page after submission -->
-                <!-- <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html"> -->
-                <!-- Optional: Add a custom thank you message -->
-                <!-- <input type="hidden" name="_autoresponse" value="Thank you for your message! We'll get back to you soon."> -->
-                <input type="text" name="_gotcha" style="display:none"/>                 
-                <button type="submit" class="submit-btn">Send Message</button>
-           </form>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2025 Designed by A.Israel and Developed by A.Immanuel . All rights reserved.</p>
-    
+        <p>&copy; 2025 Alvin Immanuel. Crafted with code and ❤️</p>
     </footer>
+
     <script src="./static/js/main.js"></script>
-    
 </body>
 </html>

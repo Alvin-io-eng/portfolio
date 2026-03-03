@@ -8,46 +8,71 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="./static/css/style.css">
-    <link rel="stylesheet" href="./static/css/projects.css">
 </head>
 <body>
-    <!-- Background Particles -->
-    <div class="particles" id="particles"></div>
-    
+    <!-- Animated Background Elements -->
+    <div class="background-container">
+        <div class="gradient-orb gradient-orb-1"></div>
+        <div class="gradient-orb gradient-orb-2"></div>
+        <div class="gradient-orb gradient-orb-3"></div>
+        <div class="noise-texture"></div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="index.html" class="brand">
-                <span class="highlight">O</span>uma
+                <span class="brand-highlight">A</span>lvin
             </a>
             <ul class="nav-links">
-                <li><a href="index.html#about">About Me</a></li>
-                <li><a href="index.html#skills">My Skills</a></li>
-                <li><a href="index.html#projects">Projects</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">All Projects</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
             </ul>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
 
-    <!-- Projects Page Content -->
-    <section class="projects-page">
-        <div class="projects-page-header">
-            <h1>All <span style="color: var(--primary-color);">Projects</span></h1>
-            <p style="color: var(--text-muted); font-size: 1.2rem;">Here are all the amazing projects I've worked on</p>
+    <!-- Projects Hero Section -->
+    <section class="projects-hero" id="projects-hero">
+        <div class="section-container">
+            <div class="projects-hero-content">
+                <h1 class="hero-title">
+                    <span class="word">All</span>
+                    <span class="word">My</span>
+                    <span class="word">Projects</span>
+                </h1>
+                <p class="hero-subtitle">A complete showcase of my work, from innovative SaaS products to stunning web applications</p>
+            </div>
         </div>
-        
-        <div class="all-projects-grid" id="all-projects-container">
-            <!-- All projects will be loaded here dynamically -->
+    </section>
+
+    <!-- All Projects Section -->
+    <section class="projects" id="projects">
+        <div class="section-container">
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Projects will be loaded dynamically from projects.json -->
+            </div>
         </div>
-        
-        <div style="text-align: center; margin-top: 3rem;">
-            <a href="index.html" class="back-to-home">Back to Home</a>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="section-container">
+            <h2>Have a Project in Mind?</h2>
+            <p>Let's collaborate and bring your ideas to life with cutting-edge technology and creative solutions.</p>
+            <a href="index.html#contact" class="btn btn-primary">Start Your Project</a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2025 Designed by A.Israel and Developed by A.Immanuel. All rights reserved.</p>
+        <p>&copy; 2025 Alvin Immanuel. Crafted with code and ❤️</p>
     </footer>
 
     <script src="./static/js/main.js"></script>
