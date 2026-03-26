@@ -3,24 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Projects - Alvin Immanuel</title>
+    <title>All Projects — Alvin Immanuel</title>
+    <meta name="description" content="Browse all projects by Alvin Immanuel — Fullstack Developer & SaaS Entrepreneur">
     <link rel="icon" href="./static/img/monogram-hq.png" sizes="32x32" type="image/png">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Styles -->
     <link rel="stylesheet" href="./static/css/style.css">
     <link rel="stylesheet" href="./static/css/projects.css">
 </head>
 <body>
+
     <!-- Background Particles -->
     <div class="particles" id="particles"></div>
-    
+
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="index.html" class="brand">
                 <span class="highlight">O</span>uma
             </a>
-            <ul class="nav-links">
+            <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="nav-links">
                 <li><a href="index.html#about">About Me</a></li>
                 <li><a href="index.html#skills">My Skills</a></li>
                 <li><a href="index.html#projects">Projects</a></li>
@@ -29,25 +40,37 @@
         </div>
     </nav>
 
-    <!-- Projects Page Content -->
+    <!-- Projects Page -->
     <section class="projects-page">
         <div class="projects-page-header">
+            <span class="section-tag-center">The full collection</span>
             <h1>All <span style="color: var(--primary-color);">Projects</span></h1>
-            <p style="color: var(--text-muted); font-size: 1.2rem;">Here are all the amazing projects I've worked on</p>
+            <p>Every project I've poured my skills and passion into</p>
         </div>
-        
+
+        <!-- Filter Bar -->
+        <div class="project-filters">
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Web Apps</button>
+            <button class="filter-btn">SaaS</button>
+            <button class="filter-btn">Tools</button>
+        </div>
+
+        <!-- Projects Grid -->
         <div class="all-projects-grid" id="all-projects-container">
-            <!-- All projects will be loaded here dynamically -->
+            <!-- Dynamically loaded -->
         </div>
-        
-        <div style="text-align: center; margin-top: 3rem;">
-            <a href="index.html" class="back-to-home">Back to Home</a>
+
+        <div class="back-home-wrap">
+            <a href="index.html" class="back-to-home">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2025 Designed by A.Israel and Developed by A.Immanuel. All rights reserved.</p>
+        <p>&copy; 2025 Designed by A.Israel &amp; Developed by A.Immanuel. All rights reserved.</p>
     </footer>
 
     <script src="./static/js/main.js"></script>

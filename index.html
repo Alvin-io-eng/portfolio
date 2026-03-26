@@ -3,23 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alvin Immanuel - Portfolio</title>
+    <title>Alvin Immanuel — Portfolio</title>
+    <meta name="description" content="Alvin Immanuel — Telecommunication Engineer, Fullstack Developer & SaaS Entrepreneur">
     <link rel="icon" href="./static/img/monogram-hq.png" sizes="32x32" type="image/png">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Styles -->
     <link rel="stylesheet" href="./static/css/style.css">
 </head>
 <body>
+
     <!-- Background Particles -->
     <div class="particles" id="particles"></div>
- 
+
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#" class="brand">
                 <span class="highlight">O</span>uma
             </a>
-            <ul class="nav-links">
+            <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="nav-links">
                 <li><a href="#about">About Me</a></li>
                 <li><a href="#skills">My Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
@@ -28,77 +39,110 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- ── Hero ─────────────────────────────── -->
+    <section class="hero" id="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <h1>Hello,<br>I'm <span style="color: var(--primary-color);">Alvin</span></h1>
-                <p class="subtitle">Telecommunication Engineer, Fullstack Developer & SaaS Entrepreneur</p>
-                <a href="#contact" class="cta-button">Let's Get In Touch</a>
+                <span class="hero-eyebrow">Welcome to my portfolio</span>
+                <h1>
+                    Hello,<br>
+                    I'm <span class="name-highlight">Alvin</span>
+                </h1>
+                <p class="subtitle"><span class="cursor-blink"></span></p>
+                <div class="hero-actions">
+                    <a href="#contact" class="cta-button">
+                        <i class="fas fa-paper-plane"></i> Let's Work Together
+                    </a>
+                    <a href="#about" class="hero-scroll-hint">
+                        <span class="scroll-mouse"><span class="scroll-wheel"></span></span>
+                        Scroll down
+                    </a>
+                </div>
             </div>
             <div class="hero-visual">
                 <div class="hero-image-container">
-                    <div class="hero-image" 
-                    style="background: url('./static/img/hero.png') no-repeat center center, var(--gradient-1);
-                           background-size: cover;
-                           display: flex; 
-                           align-items: center;
-                           justify-content: center;
-                           font-size: 2rem;
-                           color: white;"></div>
+                    <div class="hero-image-wrapper">
+                        <div class="hero-image"
+                            style="background: url('./static/img/hero.png') no-repeat center center, var(--gradient-1);
+                                   background-size: cover;"></div>
+                    </div>
                     <div class="floating-cards">
-                        <div class="floating-card"></div>
-                        <div class="floating-card"></div>
-                        <div class="floating-card"></div>
+                        <div class="floating-card">
+                            <div class="card-number">5+</div>
+                            <div class="card-label">Projects Built</div>
+                        </div>
+                        <div class="floating-card">
+                            <div class="card-number">3</div>
+                            <div class="card-label">SaaS Products</div>
+                        </div>
+                        <div class="floating-card">
+                            <div class="card-number">∞</div>
+                            <div class="card-label">Lines of Code</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- ── Stats Strip ───────────────────────── -->
+    <div class="stats-strip scroll-animate">
+        <div class="stats-strip-inner">
+            <div class="stat-item">
+                <span class="stat-number" data-target="5" data-suffix="+">0</span>
+                <span class="stat-label">Projects Built</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="3" data-suffix="">0</span>
+                <span class="stat-label">SaaS Products</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="13" data-suffix="+">0</span>
+                <span class="stat-label">Technologies</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="3" data-suffix="+ yrs">0</span>
+                <span class="stat-label">Experience</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── About ─────────────────────────────── -->
     <section class="about scroll-animate" id="about">
         <div class="about-container">
             <div class="about-images">
                 <div class="image-grid">
-                    <div class="about-img" style="background: url('./static/img/manu1.jpg') no-repeat center center, var(--gradient-1);
-                    background-size: cover;"></div>
-                    <div class="about-img" style="background: url('./static/img/manu2.jpg') no-repeat center center, var(--gradient-2);
-                    background-size: cover;"></div>
-                    <div class="about-img" style="background: url('./static/img/manu3.jpg') no-repeat center center, var(--gradient-3);
-                    background-size: cover;"></div>
-                    <div class="about-img" style="background: url('./static/img/manu4.jpg') no-repeat center center, var(--gradient-1);
-                    background-size: cover;"></div>
+                    <div class="about-img" style="background: url('./static/img/manu1.jpg') no-repeat center center; background-size: cover;"></div>
+                    <div class="about-img" style="background: url('./static/img/manu2.jpg') no-repeat center center; background-size: cover;"></div>
+                    <div class="about-img" style="background: url('./static/img/manu3.jpg') no-repeat center center; background-size: cover;"></div>
+                    <div class="about-img" style="background: url('./static/img/manu4.jpg') no-repeat center center; background-size: cover;"></div>
                 </div>
                 <div class="main-image"
-                 style="background: url('./static/img/manu5.JPG') no-repeat center center, var(--gradient-2);
-                       background-size: cover;
-                        display: flex; 
-                        align-items: center;
-                        justify-content: center; 
-                        color: white; 
-                        font-weight: bold;"></div>
+                     style="background: url('./static/img/manu5.JPG') no-repeat center center; background-size: cover;"></div>
             </div>
             <div class="about-content">
+                <span class="section-tag">Get to know me</span>
                 <h2>Who <span style="color: var(--primary-color);">Am I</span>?</h2>
-                <p>My full name is Alvin Immanuel, a passionate fullstack web app developer and designer. I am conversant with both front-end and back-end programming languages, but I have specialized mainly in the backend part.</p>
-                <p>I am currently studying electrical and electronics engineering, and plan to major in telecommunication engineering thereafter.</p>
-                <p>I am passionate about entrepreneurship and solving problems - it's kind of in my blood. I have created around 3 SaaS products so far which are doing really well.</p>
-                <p>Doing all this in my early 20s is an achievement to me and an indication that I am yet to accomplish more than I could ever imagine.</p>
+                <p>My full name is Alvin Immanuel — a passionate fullstack web app developer and designer. I'm conversant with both front-end and back-end programming, but have specialized mainly in the backend side.</p>
+                <p>I'm currently studying electrical and electronics engineering, with plans to major in telecommunication engineering thereafter.</p>
+                <p>I'm passionate about entrepreneurship and solving problems — it's kind of in my blood. I've built around 3 SaaS products so far and they're doing really well.</p>
+                <p>Doing all this in my early 20s is an achievement I'm proud of, and a sign that I'm yet to accomplish more than I could ever imagine.</p>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- ── Skills ────────────────────────────── -->
     <section class="skills scroll-animate" id="skills">
         <div class="skills-container">
-            <div class="skills-header">
-                <h2>Skills <span style="color: var(--text-light);">and</span> <span style="color: var(--primary-color);">Tools</span></h2>
-                <p style="color: var(--text-muted); font-size: 1.2rem;">I have a vast collection of software skills that I have acquired and practiced nearly all my life</p>
+            <div class="section-header">
+                <span class="section-tag-center">What I bring to the table</span>
+                <h2>Skills <span style="color: var(--text-muted);">and</span> <span style="color: var(--primary-color);">Tools</span></h2>
+                <p>A vast collection of software skills I've acquired and practiced nearly all my life</p>
             </div>
-            
+
             <div class="skills-grid">
                 <div class="skill-category">
+                    <span class="skill-category-icon">⚡</span>
                     <h3>Development</h3>
                     <ul class="skill-list">
                         <li>Front-end Development</li>
@@ -107,9 +151,10 @@
                         <li>API Development</li>
                     </ul>
                 </div>
-                
+
                 <div class="skill-category">
-                    <h3>Technology & AI</h3>
+                    <span class="skill-category-icon">🤖</span>
+                    <h3>Technology &amp; AI</h3>
                     <ul class="skill-list">
                         <li>AI and Machine Learning</li>
                         <li>Software Solutions</li>
@@ -117,9 +162,10 @@
                         <li>Database Design</li>
                     </ul>
                 </div>
-                
+
                 <div class="skill-category">
-                    <h3>Business & Creative</h3>
+                    <span class="skill-category-icon">🚀</span>
+                    <h3>Business &amp; Creative</h3>
                     <ul class="skill-list">
                         <li>Entrepreneurship</li>
                         <li>Team Building</li>
@@ -143,97 +189,94 @@
                 <span class="tool-tag"><i class="devicon-c-plain colored"></i> C</span>
                 <span class="tool-tag"><i class="devicon-arduino-plain colored"></i> Arduino</span>
                 <span class="tool-tag"><i class="devicon-blender-original colored"></i> Blender</span>
-           </div>
-
+            </div>
         </div>
     </section>
 
-    <!-- Projects Section - Carousel -->
+    <!-- ── Projects Carousel ─────────────────── -->
     <section class="projects scroll-animate" id="projects">
         <div class="projects-container">
-            <div class="projects-header">
+            <div class="section-header">
+                <span class="section-tag-center">What I've built</span>
                 <h2>My <span style="color: var(--primary-color);">Projects</span></h2>
-                <p style="color: var(--text-muted); font-size: 1.2rem;">Here are some of the amazing projects I've worked on</p>
+                <p>Some of the amazing projects I've worked on</p>
             </div>
-            
+
             <div class="projects-carousel">
-                <div class="carousel-container" id="carousel-container">
-                    <!-- Project cards will be dynamically inserted here -->
-                </div>
-                
+                <div class="carousel-container" id="carousel-container"></div>
+
                 <div class="carousel-nav">
-                    <button class="carousel-btn" id="prev-btn">
+                    <button class="carousel-btn" id="prev-btn" aria-label="Previous">
                         <i class="fas fa-chevron-left"></i>
                     </button>
-                    <button class="carousel-btn" id="next-btn">
+                    <button class="carousel-btn" id="next-btn" aria-label="Next">
                         <i class="fas fa-chevron-right"></i>
                     </button>
                 </div>
-                
-                <div class="carousel-dots" id="carousel-dots">
-                    <!-- Dots will be dynamically inserted here -->
-                </div>
+
+                <div class="carousel-dots" id="carousel-dots"></div>
             </div>
-            
+
             <div class="see-more-container">
-                <a href="projects.html" class="see-more-btn">See All Projects</a>
+                <a href="projects.html" class="see-more-btn">
+                    View All Projects <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- ── Contact ───────────────────────────── -->
     <section class="contact scroll-animate" id="contact">
         <div class="contact-container">
             <div class="contact-info">
+                <span class="section-tag">Let's connect</span>
                 <h2>Contact <span style="color: var(--primary-color);">Me</span></h2>
-                <p>Ready to bring your ideas to life? Let's collaborate and create something amazing together. I'm always excited to work on new projects and challenges.</p>
+                <p>Ready to bring your ideas to life? Let's collaborate and create something amazing. I'm always excited to work on new projects and challenges.</p>
                 <div class="social-links">
                     <a href="mailto:alvinouma401@gmail.com" class="social-link" title="Email">
-                       <i class="fas fa-envelope"></i>
+                        <i class="fas fa-envelope"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/alvin-ouma-5190a0271" class="social-link" title="LinkedIn" target="_blank">
-                       <i class="fab fa-linkedin"></i>
+                    <a href="https://www.linkedin.com/in/alvin-ouma-5190a0271" class="social-link" title="LinkedIn" target="_blank" rel="noopener">
+                        <i class="fab fa-linkedin"></i>
                     </a>
-                    <a href="https://github.com/Alvin-io-eng" class="social-link" title="GitHub" target="_blank">
-                       <i class="fab fa-github"></i>
+                    <a href="https://github.com/Alvin-io-eng" class="social-link" title="GitHub" target="_blank" rel="noopener">
+                        <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://wa.me/254728902689?text=Hello%20Alvin%2C%20I%27m%20interested%20in%20your%20services" 
-                         class="social-link" title="WhatsApp" target="_blank">
+                    <a href="https://wa.me/254728902689?text=Hello%20Alvin%2C%20I%27m%20interested%20in%20your%20services"
+                       class="social-link" title="WhatsApp" target="_blank" rel="noopener">
                         <i class="fab fa-whatsapp"></i>
                     </a>
                 </div>
-
             </div>
-            
+
             <form class="contact-form" action="https://formspree.io/f/mdkrwpzk" method="POST">
                 <div class="form-group">
-                    <input type="text" name="name" placeholder="Your Name" required>
+                    <label>Your Name</label>
+                    <input type="text" name="name" placeholder="John Doe" required>
                 </div>
                 <div class="form-group">
-                    <input type="email" name="email" placeholder="Your Email" required>
+                    <label>Email Address</label>
+                    <input type="email" name="email" placeholder="john@example.com" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="_subject" placeholder="Subject" required>
+                    <label>Subject</label>
+                    <input type="text" name="_subject" placeholder="Let's work together" required>
                 </div>
                 <div class="form-group">
-                    <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+                    <label>Message</label>
+                    <textarea name="message" rows="5" placeholder="Tell me about your project…" required></textarea>
                 </div>
-                <!-- Optional: Redirect to a thank you page after submission -->
-                <!-- <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html"> -->
-                <!-- Optional: Add a custom thank you message -->
-                <!-- <input type="hidden" name="_autoresponse" value="Thank you for your message! We'll get back to you soon."> -->
-                <input type="text" name="_gotcha" style="display:none"/>                 
+                <input type="text" name="_gotcha" style="display:none">
                 <button type="submit" class="submit-btn">Send Message</button>
-           </form>
+            </form>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2025 Designed by A.Israel and Developed by A.Immanuel . All rights reserved.</p>
-    
+        <p>&copy; 2025 Designed by A.Israel &amp; Developed by A.Immanuel. All rights reserved.</p>
     </footer>
+
     <script src="./static/js/main.js"></script>
-    
 </body>
 </html>
