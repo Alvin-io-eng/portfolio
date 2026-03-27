@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alvin Immanuel — Blog | Tech, SaaS & Engineering Insights</title>
+    <meta name="description" content="Read articles by Alvin Immanuel on telecommunication engineering, fullstack development, SaaS entrepreneurship, and AI.">
+    <link rel="icon" href="./static/img/monogram-hq.png" sizes="32x32" type="image/png">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* ===== GLOBAL STYLES (inherited from original design system) ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --primary-color: #80c3fd;
+            --primary-glow: rgba(128, 195, 253, 0.35);
+            --accent-color: #d4c628;
+            --accent-glow: rgba(212, 198, 40, 0.3);
+            --bg-dark: #0b161d;
+            --bg-darker: #080f14;
+            --bg-card: #0e202f;
+            --bg-card-hover: #132940;
+            --text-light: #eef2f7;
+            --text-muted: #8899aa;
+            --border-glow: rgba(128, 195, 253, 0.15);
+            --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Syne', sans-serif;
+        }
+        /* custom cursor (same as portfolio) */
+        *, *::before, *::after { cursor: none !important; }
+        .cursor-dot {
+            position: fixed; width: 8px; height: 8px; background: var(--primary-color);
+            border-radius: 50%; pointer-events: none; z-index: 99999;
+            transform: translate(-50%, -50%); transition: transform 0.1s ease;
+        }
+        .cursor-ring {
+            position: fixed; width: 36px; height: 36px; border: 2px solid var(--primary-color);
+            border-radius: 50%; pointer-events: none; z-index: 99998;
+            transition: transform 0.18s ease, width 0.25s, height 0.25s, border-color 0.25s;
+            transform: translate(-50%, -50%); opacity: 0.6;
+        }
+        .cursor-ring.hovering { width: 56px; height: 56px; border-color: var(--accent-color); opacity: 0.9; }
+        /* scroll progress */
+        .scroll-progress {
+            position: fixed; top: 0; left: 0; height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            z-index: 9999; width: 0%; transition: width 0.1s linear;
+        }
+        /* particles background */
+        .particles {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0;
+        }
+        .particle {
+            position: absolute; border-radius: 50%; opacity: 0;
+            animation: particleDrift linear infinite;
+        }
+        @keyframes particleDrift {
+            0% { opacity: 0; transform: translateY(0) scale(0); }
+            10% { opacity: 0.6; transform: scale(1); }
+            90% { opacity: 0.3; }
+            100% { opacity: 0; transform: translateY(-100vh) scale(0.5); }
+        }
+        /* navbar */
+        .navbar {
+            position: fixed; top: 0; width: 100%; padding: 1.1rem 2.5rem;
+            background: rgba(8, 15, 20, 0.7); backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border-glow); z-index: 1000;
+            transition: var(--transition);
+        }
+        .navbar.scrolled { background: rgba(8, 15, 20, 0.95); padding: 0.8rem 2.5rem; box-shadow: 0 8px 40px rgba(0,0,0,0.4); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .brand { font-family: 'Syne', sans-serif; font-size: 1.7rem; font-weight: 800; text-decoration: none; color: var(--text-light); letter-spacing: -0.02em; }
+        .brand .highlight { background: var(--accent-color); color: var(--bg-dark); padding: 0.15rem 0.45rem; border-radius: 50%; margin-right: 0.15rem; display: inline-block; animation: brandPulse 3s ease-in-out infinite; }
+        @keyframes brandPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.08) rotate(-3deg)} }
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; transition: var(--transition); padding: 0.4rem 0; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--accent-color); transition: width 0.3s ease; }
+        .nav-links a:hover, .nav-links a.active { color: var(--text-light); }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; }
+        .hamburger span { width: 26px; height: 2px; background: var(--text-light); transition: var(--transition); }
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        /* blog hero */
+        .blog-hero {
+            padding: 10rem 2rem 5rem;
+            background: var(--bg-darker);
+            text-align: center;
+            position: relative;
+        }
+        .blog-hero::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+        }
+        .blog-hero h1 {
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--text-light), var(--primary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .blog-subhead {
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 1rem auto 0;
+            font-size: 1.1rem;
+        }
+        /* blog grid */
+        .blog-container {
+            max-width: 1300px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+        .blog-card {
+            background: var(--bg-card);
+            border-radius: 24px;
+            border: 1px solid var(--border-glow);
+            overflow: hidden;
+            transition: var(--transition);
+            transform: translateY(0);
+            backdrop-filter: blur(2px);
+        }
+        .blog-card:hover {
+            transform: translateY(-12px);
+            border-color: rgba(128,195,253,0.4);
+            box-shadow: 0 25px 45px rgba(0,0,0,0.4);
+            background: var(--bg-card-hover);
+        }
+        .blog-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .blog-card:hover .blog-img {
+            transform: scale(1.03);
+        }
+        .blog-content {
+            padding: 1.6rem;
+        }
+        .blog-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.75rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+        }
+        .blog-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+        .blog-excerpt {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px solid transparent;
+            transition: 0.2s;
+        }
+        .read-more:hover {
+            gap: 0.8rem;
+            border-bottom-color: var(--primary-color);
+        }
+        /* featured post highlight */
+        .featured-post {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            background: var(--bg-card);
+            border-radius: 32px;
+            border: 1px solid var(--border-glow);
+            overflow: hidden;
+            margin-bottom: 4rem;
+            transition: var(--transition);
+        }
+        .featured-post:hover {
+            transform: scale(1.01);
+            border-color: rgba(128,195,253,0.5);
+        }
+        .featured-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            min-height: 280px;
+        }
+        .featured-content {
+            padding: 2rem;
+        }
+        .featured-badge {
+            display: inline-block;
+            background: rgba(212,198,40,0.2);
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        .featured-title {
+            font-size: 1.9rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        .featured-desc {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+        /* categories & filter */
+        .blog-categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-bottom: 3rem;
+        }
+        .category-btn {
+            background: transparent;
+            border: 1px solid var(--border-glow);
+            padding: 0.5rem 1.4rem;
+            border-radius: 40px;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .category-btn.active, .category-btn:hover {
+            background: var(--primary-color);
+            color: var(--bg-dark);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 12px var(--primary-glow);
+        }
+        /* pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin: 4rem 0 3rem;
+        }
+        .page-link {
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            color: var(--text-light);
+            transition: var(--transition);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .page-link.active, .page-link:hover {
+            background: var(--primary-color);
+            color: var(--bg-dark);
+            border-color: var(--primary-color);
+        }
+        /* footer same style */
+        .footer {
+            background: var(--bg-darker);
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-glow);
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+        /* responsive */
+        @media (max-width: 900px) {
+            .featured-post { grid-template-columns: 1fr; }
+            .blog-grid { gap: 1.5rem; }
+            .navbar .nav-container { padding: 0; }
+        }
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .nav-links {
+                position: fixed; top: 0; right: 0; width: 280px; height: 100vh;
+                background: rgba(8,15,20,0.98); backdrop-filter: blur(30px);
+                flex-direction: column; justify-content: center; gap: 2rem;
+                padding: 2rem; transform: translateX(100%);
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                border-left: 1px solid var(--border-glow);
+                z-index: 1050;
+            }
+            .nav-links.mobile-open { transform: translateX(0); }
+            .nav-links a { font-size: 1.1rem; color: var(--text-light); }
+        }
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<div class="particles" id="particles"></div>
+<div class="scroll-progress" id="scroll-progress-bar"></div>
+
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="brand">
+            <span class="highlight">O</span>uma
+        </a>
+        <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">About Me</a></li>
+            <li><a href="index.html#skills">My Skills</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="blog.html" class="active">Blog</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="blog-hero scroll-animate">
+    <h1>The Developer's Chronicle</h1>
+    <p class="blog-subhead">Insights on telecommunication, fullstack engineering, AI, and building scalable SaaS — straight from the mind of Alvin Immanuel.</p>
+</section>
+
+<div class="blog-container">
+    <!-- Categories filter -->
+    <div class="blog-categories" id="category-filters">
+        <button class="category-btn active" data-category="all">All Articles</button>
+        <button class="category-btn" data-category="saas">SaaS</button>
+        <button class="category-btn" data-category="dev">Development</button>
+        <button class="category-btn" data-category="ai">AI & Tech</button>
+        <button class="category-btn" data-category="telecom">Telecom</button>
+    </div>
+
+    <!-- Featured Post (dynamic but static preview) -->
+    <div class="featured-post scroll-animate" id="featuredPostContainer">
+        <!-- will be filled by js -->
+    </div>
+
+    <!-- Blog Grid -->
+    <div class="blog-grid" id="blogGrid"></div>
+
+    <!-- Pagination -->
+    <div class="pagination" id="paginationControls"></div>
+</div>
+
+<footer class="footer">
+    <p>&copy; 2025 Designed by A.Israel &amp; Developed by A.Immanuel. All rights reserved. | <i class="fas fa-newspaper"></i> Blog Edition</p>
+</footer>
+
+<script>
+    // -------- BLOG DATA (with high-quality images & categories) --------
+    const BLOG_POSTS = [
+        {
+            id: 1,
+            title: "Building Scalable SaaS: Lessons from 3 Profitable Products",
+            excerpt: "From MVP nightmares to recurring revenue — what I learned while launching three SaaS tools before turning 23.",
+            content: "Full article content...",
+            date: "March 15, 2025",
+            readTime: "7 min read",
+            category: "saas",
+            image: "https://picsum.photos/id/26/800/500",   // scenic coding vibe
+            featured: true
+        },
+        {
+            id: 2,
+            title: "Telecommunication Engineering meets Fullstack: The Future of Edge Networks",
+            excerpt: "How 5G and modern web stacks converge to create ultra-low-latency experiences.",
+            date: "February 28, 2025",
+            readTime: "5 min read",
+            category: "telecom",
+            image: "https://picsum.photos/id/96/800/500",
+            featured: false
+        },
+        {
+            id: 3,
+            title: "My AI Toolkit: Leveraging LLMs for Rapid Prototyping",
+            excerpt: "How I use AI to accelerate development, from generating boilerplate to debugging complex logic.",
+            date: "February 10, 2025",
+            readTime: "6 min read",
+            category: "ai",
+            image: "https://picsum.photos/id/1/800/500",
+            featured: false
+        },
+        {
+            id: 4,
+            title: "Why I Built AiVana: Automating HR with Intelligent Agents",
+            excerpt: "A deep dive into my flagship SaaS product, tech stack, and user adoption stories.",
+            date: "January 22, 2025",
+            readTime: "8 min read",
+            category: "saas",
+            image: "https://picsum.photos/id/0/800/500",
+            featured: false
+        },
+        {
+            id: 5,
+            title: "Mastering Three.js: Building Interactive 3D Portfolios",
+            excerpt: "Exploring WebGL boundaries and creating immersive frontend experiences that wow clients.",
+            date: "January 5, 2025",
+            readTime: "4 min read",
+            category: "dev",
+            image: "https://picsum.photos/id/20/800/500",
+            featured: false
+        },
+        {
+            id: 6,
+            title: "Fullstack Architecture: Monolith vs Microservices for Startups",
+            excerpt: "Choosing the right backend structure when you're moving fast and scaling gradually.",
+            date: "December 18, 2024",
+            readTime: "6 min read",
+            category: "dev",
+            image: "https://picsum.photos/id/106/800/500",
+            featured: false
+        },
+        {
+            id: 7,
+            title: "Generative AI in Telecommunications: Network Optimization",
+            excerpt: "How predictive models are changing the way we manage signal coverage and traffic.",
+            date: "December 5, 2024",
+            readTime: "5 min read",
+            category: "telecom",
+            image: "https://picsum.photos/id/91/800/500",
+            featured: false
+        },
+        {
+            id: 8,
+            title: "Design Systems for Developers: Crafting Pixel-Perfect UIs Faster",
+            excerpt: "My approach to component-driven design using CSS variables and reusability patterns.",
+            date: "November 20, 2024",
+            readTime: "4 min read",
+            category: "dev",
+            image: "https://picsum.photos/id/21/800/500",
+            featured: false
+        },
+        {
+            id: 9,
+            title: "From Engineering Student to SaaS Entrepreneur: The Mindset Shift",
+            excerpt: "Balancing university, side projects, and building a business — my personal playbook.",
+            date: "November 2, 2024",
+            readTime: "9 min read",
+            category: "saas",
+            image: "https://picsum.photos/id/155/800/500",
+            featured: false
+        }
+    ];
+
+    // Filtering & Pagination state
+    let activeCategory = "all";
+    let currentPage = 1;
+    const POSTS_PER_PAGE = 6;
+
+    // DOM elements
+    const blogGrid = document.getElementById("blogGrid");
+    const paginationDiv = document.getElementById("paginationControls");
+    const featuredContainer = document.getElementById("featuredPostContainer");
+    const categoryBtns = document.querySelectorAll(".category-btn");
+
+    // Filter posts by category
+    function getFilteredPosts() {
+        if (activeCategory === "all") return [...BLOG_POSTS];
+        return BLOG_POSTS.filter(post => post.category === activeCategory);
+    }
+
+    // Get paginated posts
+    function getPaginatedPosts() {
+        const filtered = getFilteredPosts();
+        const start = (currentPage - 1) * POSTS_PER_PAGE;
+        const end = start + POSTS_PER_PAGE;
+        return filtered.slice(start, end);
+    }
+
+    // Render Featured Post (only first featured = true)
+    function renderFeatured() {
+        if (!featuredContainer) return;
+        const featuredPost = BLOG_POSTS.find(p => p.featured === true);
+        if (featuredPost) {
+            featuredContainer.innerHTML = `
+                <img class="featured-img" src="${featuredPost.image}" alt="${featuredPost.title}">
+                <div class="featured-content">
+                    <span class="featured-badge"><i class="fas fa-star"></i> FEATURED ARTICLE</span>
+                    <h2 class="featured-title">${featuredPost.title}</h2>
+                    <div class="blog-meta" style="margin-bottom:0.5rem;">
+                        <span><i class="far fa-calendar-alt"></i> ${featuredPost.date}</span>
+                        <span><i class="far fa-clock"></i> ${featuredPost.readTime}</span>
+                        <span><i class="fas fa-tag"></i> ${featuredPost.category.toUpperCase()}</span>
+                    </div>
+                    <p class="featured-desc">${featuredPost.excerpt}</p>
+                    <a href="#" class="read-more" data-id="${featuredPost.id}">Read Full Story <i class="fas fa-arrow-right"></i></a>
+                </div>
+            `;
+        } else {
+            featuredContainer.innerHTML = `<div class="featured-content"><p>🌟 Latest insights coming soon</p></div>`;
+        }
+        // attach click listener to featured read-more
+        const featuredLink = featuredContainer.querySelector('.read-more');
+        if(featuredLink) featuredLink.addEventListener('click', (e) => { e.preventDefault(); alert(`📖 "${featuredPost?.title}" – full article will be available in the complete blog version. Stay tuned!`); });
+    }
+
+    // Render blog cards
+    function renderBlogCards() {
+        if (!blogGrid) return;
+        const postsToShow = getPaginatedPosts();
+        if (postsToShow.length === 0) {
+            blogGrid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:3rem; color:var(--text-muted);"><i class="fas fa-newspaper"></i> No articles in this category yet. Check back soon!</div>`;
+            return;
+        }
+        blogGrid.innerHTML = postsToShow.map(post => `
+            <div class="blog-card scroll-animate">
+                <img class="blog-img" src="${post.image}" alt="${post.title}" loading="lazy">
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span><i class="far fa-calendar-alt"></i> ${post.date}</span>
+                        <span><i class="far fa-clock"></i> ${post.readTime}</span>
+                    </div>
+                    <h3 class="blog-title">${post.title}</h3>
+                    <p class="blog-excerpt">${post.excerpt}</p>
+                    <a href="#" class="read-more" data-id="${post.id}">Continue Reading <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        `).join('');
+        
+        // attach event listeners to all read-more buttons
+        document.querySelectorAll('.read-more[data-id]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const id = parseInt(btn.getAttribute('data-id'));
+                const post = BLOG_POSTS.find(p => p.id === id);
+                alert(`📚 "${post?.title}"\n\nFull article experience coming soon!\nStay connected for deep-dives.`);
+            });
+        });
+        // lazy scroll animation observer for new cards
+        const animatedElements = document.querySelectorAll('.blog-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        animatedElements.forEach(el => observer.observe(el));
+    }
+
+    // Pagination controls
+    function renderPagination() {
+        if (!paginationDiv) return;
+        const filtered = getFilteredPosts();
+        const totalPages = Math.ceil(filtered.length / POSTS_PER_PAGE);
+        if (totalPages <= 1) {
+            paginationDiv.innerHTML = '';
+            return;
+        }
+        let paginationHtml = '';
+        for (let i = 1; i <= totalPages; i++) {
+            paginationHtml += `<button class="page-link ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+        }
+        paginationDiv.innerHTML = paginationHtml;
+        document.querySelectorAll('.page-link').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const page = parseInt(btn.getAttribute('data-page'));
+                if (!isNaN(page) && page !== currentPage) {
+                    currentPage = page;
+                    renderBlogCards();
+                    renderPagination();
+                    window.scrollTo({ top: document.querySelector('.blog-container').offsetTop - 100, behavior: 'smooth' });
+                }
+            });
+        });
+    }
+
+    // Category filter handler
+    function setupCategoryFilters() {
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                activeCategory = btn.getAttribute('data-category');
+                currentPage = 1;
+                renderBlogCards();
+                renderPagination();
+                // re-trigger scroll animations for visible cards
+                const cards = document.querySelectorAll('.blog-card');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) entry.target.classList.add('visible');
+                    });
+                }, { threshold: 0.1 });
+                cards.forEach(c => observer.observe(c));
+            });
+        });
+    }
+
+    // ---- Cursor, Particles, Progress bar (same as original) ----
+    function initCustomCursor() {
+        const dot = document.createElement('div'); dot.className = 'cursor-dot';
+        const ring = document.createElement('div'); ring.className = 'cursor-ring';
+        document.body.appendChild(dot); document.body.appendChild(ring);
+        let mouseX=0,mouseY=0,ringX=0,ringY=0;
+        document.addEventListener('mousemove', e => { mouseX=e.clientX; mouseY=e.clientY; dot.style.left=mouseX+'px'; dot.style.top=mouseY+'px'; });
+        function animateRing() { ringX+=(mouseX-ringX)*0.12; ringY+=(mouseY-ringY)*0.12; ring.style.left=ringX+'px'; ring.style.top=ringY+'px'; requestAnimationFrame(animateRing); }
+        animateRing();
+        const hoverTargets = 'a, button, .blog-card, .category-btn, .page-link';
+        document.addEventListener('mouseover', e => { if(e.target.closest(hoverTargets)) ring.classList.add('hovering'); });
+        document.addEventListener('mouseout', e => { if(e.target.closest(hoverTargets)) ring.classList.remove('hovering'); });
+        document.addEventListener('mouseleave', () => { dot.style.opacity='0'; ring.style.opacity='0'; });
+        document.addEventListener('mouseenter', () => { dot.style.opacity='1'; ring.style.opacity=''; });
+    }
+    function initScrollProgress() {
+        const bar = document.getElementById('scroll-progress-bar');
+        window.addEventListener('scroll', () => {
+            const max = document.documentElement.scrollHeight - window.innerHeight;
+            const pct = (window.scrollY / max) * 100;
+            bar.style.width = pct + '%';
+        });
+    }
+    function createParticles() {
+        const container = document.getElementById('particles');
+        if(!container) return;
+        container.innerHTML = '';
+        const count = window.innerWidth<600?20:40;
+        const colors = ['#80c3fd','#d4c628','#4facfe','#667eea'];
+        for(let i=0;i<count;i++){
+            const p=document.createElement('div'); p.className='particle';
+            const size=Math.random()*3+1;
+            p.style.cssText = `left:${Math.random()*100}%; top:${Math.random()*100}%; width:${size}px; height:${size}px; background:${colors[Math.floor(Math.random()*colors.length)]}; animation-duration:${Math.random()*15+10}s; animation-delay:${Math.random()*10}s;`;
+            container.appendChild(p);
+        }
+    }
+    function handleNavbarScroll() { const navbar=document.getElementById('navbar'); if(navbar) navbar.classList.toggle('scrolled', window.scrollY>80); }
+    function initHamburger() {
+        const btn=document.getElementById('hamburger-btn'); const links=document.querySelector('.nav-links');
+        if(btn && links) btn.addEventListener('click',()=>{ btn.classList.toggle('open'); links.classList.toggle('mobile-open'); });
+        links?.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>{ btn?.classList.remove('open'); links.classList.remove('mobile-open'); }));
+    }
+    function initScrollAnimations() {
+        const elements = document.querySelectorAll('.scroll-animate');
+        const obs = new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); }); },{threshold:0.1});
+        elements.forEach(el=>obs.observe(el));
+    }
+
+    // initialize everything
+    document.addEventListener('DOMContentLoaded', () => {
+        initCustomCursor();
+        initScrollProgress();
+        createParticles();
+        handleNavbarScroll();
+        initHamburger();
+        initScrollAnimations();
+        window.addEventListener('scroll', handleNavbarScroll);
+        renderFeatured();
+        renderBlogCards();
+        renderPagination();
+        setupCategoryFilters();
+        // add blog link active state for navbar
+        const blogNavLink = document.querySelector('.nav-links a[href="blog.html"]');
+        if(blogNavLink) blogNavLink.classList.add('active');
+    });
+    window.addEventListener('resize', () => { createParticles(); renderBlogCards(); renderPagination(); });
+</script>
+</body>
+</html>
