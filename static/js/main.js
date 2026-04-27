@@ -397,16 +397,14 @@ function displayProjectsCarousel(projects) {
     container.innerHTML = '';
     dots.innerHTML = '';
 
-    const perSlide  = window.innerWidth < 768 ? 1 : 31;
-    const totalSlides = Math.ceil(projects.length / perSlide);
+    // Show one card at a time for continuous scroll
+    const perSlide = 1;
+    const totalSlides = projects.length;
 
     for (let s = 0; s < totalSlides; s++) {
         const slide = document.createElement('div');
         slide.className = 'carousel-slide';
-
-        for (let i = s * perSlide; i < Math.min(s * perSlide + perSlide, projects.length); i++) {
-            slide.appendChild(buildProjectCard(projects[i]));
-        }
+        slide.appendChild(buildProjectCard(projects[s]));
         container.appendChild(slide);
 
         const dot = document.createElement('div');
