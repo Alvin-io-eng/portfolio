@@ -405,9 +405,9 @@ h1, h2, h3, h4 {
 .hero-scroll-hint:hover .scroll-mouse { border-color: var(--primary-color); }
 
 .scroll-wheel {
-    width: 3px; height: 6px;
+    /* width: 3px; height: 6px;
     background: var(--text-muted);
-    border-radius: 2px;
+    border-radius: 2px; */
     animation: scrollWheel 2s ease-in-out infinite;
 }
 
