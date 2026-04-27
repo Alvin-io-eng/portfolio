@@ -362,27 +362,28 @@ async function loadProjects() {
 // ─── Build Project Card HTML ──────────────────
 function buildProjectCard(project) {
     const card = document.createElement('div');
-    card.className = 'project-card testimonial-card';
+    card.className = 'project-card';
 
-    // Use project.image or fallback
-    const imageUrl = project.image || './static/img/placeholder.png';
-    // Use project.link or fallback
     const linkHref = project.link && project.link !== '#' ? project.link : null;
     const linkTarget = linkHref ? 'target="_blank" rel="noopener"' : '';
 
-    // 5 stars always (can be dynamic if you want)
-    const stars = '<i class="fas fa-star"></i>'.repeat(5);
-
     card.innerHTML = `
-      <div class="testimonial-image" style="background-image: url('${imageUrl}');"></div>
-      <button class="testimonial-arrow" ${linkHref ? `onclick=\"window.open('${project.link}','_blank')\"` : 'disabled style=\"opacity:0.5;cursor:default;\"'}>
-        <i class="fas fa-arrow-up-right"></i>
-      </button>
-      <div class="testimonial-stars">${stars}</div>
-      <div class="testimonial-info">
-        <div class="testimonial-name">${project.title}</div>
-        <div class="testimonial-role">${project.description}</div>
-      </div>
+        <div class="project-image" style="background: url('${project.image}') center/cover no-repeat, var(--gradient-1);">
+            <div class="project-image-overlay">
+                ${linkHref
+                    ? `<a href="${project.link}" ${linkTarget} class="overlay-view-btn"><i class="fas fa-external-link-alt"></i> View Live</a>`
+                    : `<span class="overlay-view-btn" style="opacity:0.5;cursor:default;">Coming Soon</span>`
+                }
+            </div>
+        </div>
+        <div class="project-content">
+            <h3>${project.title}</h3>
+            <p>${project.description}</p>
+            ${linkHref
+                ? `<a href="${project.link}" ${linkTarget} class="project-link"><i class="fas fa-arrow-right"></i> View Project</a>`
+                : `<span class="project-link" style="opacity:0.5;cursor:default;">Coming Soon</span>`
+            }
+        </div>
     `;
     return card;
 }
@@ -396,7 +397,7 @@ function displayProjectsCarousel(projects) {
     container.innerHTML = '';
     dots.innerHTML = '';
 
-    const perSlide  = window.innerWidth < 768 ? 1 : 3;
+    const perSlide  = window.innerWidth < 768 ? 1 : 31;
     const totalSlides = Math.ceil(projects.length / perSlide);
 
     for (let s = 0; s < totalSlides; s++) {
