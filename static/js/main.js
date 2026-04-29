@@ -388,83 +388,53 @@ function buildProjectCard(project) {
     return card;
 }
 
-// ─── Carousel ─────────────────────────────────
+// ─── New Radio Button Carousel ─────────────────
 function displayProjectsCarousel(projects) {
-    const container = document.getElementById('carousel-container');
-    const dots      = document.getElementById('carousel-dots');
-    if (!container || !dots) return;
+    const listContainer = document.getElementById('projects-list');
+    if (!listContainer) return;
 
-    container.innerHTML = '';
-    dots.innerHTML = '';
+    // Clear existing content
+    listContainer.innerHTML = '';
 
-    // Show one card at a time for continuous scroll
-    const perSlide = 1;
-    const totalSlides = projects.length;
+    // Project colors for each item
+    const projectColors = {
+        0: '#80c3fd', // AiVana - primary blue
+        1: '#d4c628', // Calculator - accent yellow
+        2: '#4facfe', // Shake-Up Kitchen - light blue
+        3: '#667eea', // Three JS Portfolio - purple
+        4: '#F27935'  // Premier Motors - orange
+    };
 
-    for (let s = 0; s < totalSlides; s++) {
-        const slide = document.createElement('div');
-        slide.className = 'carousel-slide';
-        slide.appendChild(buildProjectCard(projects[s]));
-        container.appendChild(slide);
+    projects.forEach((project, index) => {
+        const item = document.createElement('li');
+        item.className = 'item';
 
-        const dot = document.createElement('div');
-        dot.className = s === 0 ? 'dot active' : 'dot';
-        dot.dataset.slide = s;
-        dot.addEventListener('click', () => goToSlide(s));
-        dots.appendChild(dot);
-    }
+        // Create unique ID from title
+        const projectId = project.title.toLowerCase().replace(/\s+/g, '-');
+        const isChecked = index === 0 ? 'checked' : '';
 
-    initCarousel(totalSlides);
-}
+        item.innerHTML = `
+            <input type="radio" id="radio_${projectId}" name="projects_carousel" value="${project.title}" ${isChecked}>
+            <label for="radio_${projectId}" class="label_${index}">
+                ${project.title}
+            </label>
+            <div class="content content_${index}">
+                <div class="picto" style="background-image: url('${project.image}')"></div>
+                <h1 style="color: ${projectColors[index] || '#80c3fd'}">${project.title}</h1>
+                <p>${project.description}</p>
+                ${project.link && project.link !== '#' 
+                    ? `<a href="${project.link}" target="_blank" rel="noopener" class="read-more" style="margin-top: 1rem; display: inline-flex; align-items: center; gap: 0.5rem; color: ${projectColors[index] || '#80c3fd'}; text-decoration: none; font-weight: 600;">
+                        <i class="fas fa-external-link-alt"></i> View Live
+                       </a>` 
+                    : `<span style="opacity: 0.5; cursor: default; margin-top: 1rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+                        <i class="fas fa-clock"></i> Coming Soon
+                       </span>`
+                }
+            </div>
+        `;
 
-let currentSlide = 0;
-let autoSlide;
-
-function goToSlide(index) {
-    const container = document.getElementById('carousel-container');
-    const dots = document.querySelectorAll('.dot');
-    currentSlide = index;
-    container.style.transform = `translateX(-${index * 100}%)`;
-    dots.forEach((d, i) => d.classList.toggle('active', i === index));
-}
-
-function initCarousel(total) {
-    const container = document.getElementById('carousel-container');
-    const prevBtn   = document.getElementById('prev-btn');
-    const nextBtn   = document.getElementById('next-btn');
-    if (!container || total <= 1) return;
-
-    if (prevBtn) prevBtn.addEventListener('click', () => {
-        goToSlide((currentSlide - 1 + total) % total);
-        resetAuto(total);
+        listContainer.appendChild(item);
     });
-    if (nextBtn) nextBtn.addEventListener('click', () => {
-        goToSlide((currentSlide + 1) % total);
-        resetAuto(total);
-    });
-
-    // Touch swipe support
-    let startX = 0;
-    container.addEventListener('touchstart', e => startX = e.touches[0].clientX, { passive: true });
-    container.addEventListener('touchend', e => {
-        const diff = startX - e.changedTouches[0].clientX;
-        if (Math.abs(diff) > 50) {
-            diff > 0
-                ? goToSlide((currentSlide + 1) % total)
-                : goToSlide((currentSlide - 1 + total) % total);
-            resetAuto(total);
-        }
-    });
-
-    // Auto advance
-    autoSlide = setInterval(() => goToSlide((currentSlide + 1) % total), 5000);
-    container.addEventListener('mouseenter', () => clearInterval(autoSlide));
-    container.addEventListener('mouseleave', () => { autoSlide = setInterval(() => goToSlide((currentSlide + 1) % total), 5000); });
-}
-
-function resetAuto(total) {
-    clearInterval(autoSlide);
-    autoSlide = setInterval(() => goToSlide((currentSlide + 1) % total), 5000);
 }
 
 // ─── All Projects Grid ────────────────────────

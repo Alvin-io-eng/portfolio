@@ -1049,6 +1049,209 @@ h1, h2, h3, h4 {
     box-shadow: 0 12px 30px var(--primary-glow);
 }
 
+/* ─── New Projects Carousel (Radio Button Style) ───────────────────────── */
+#scene {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    max-width: 1000px;
+    height: 400px;
+    margin: 0 auto;
+    background-color: var(--bg-card);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+}
+
+#left-zone {
+    background: var(--bg-card);
+    height: 75%;
+    flex-grow: 0;
+    display: flex;
+    width: 350px;
+    align-items: flex-start;
+    justify-content: left;
+    z-index: 10;
+}
+
+#left-zone .list {
+    display: flex;
+    list-style: none;
+    align-content: stretch;
+    flex-direction: column;
+    flex-grow: 1;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+#left-zone .list::-webkit-scrollbar {
+    width: 6px;
+}
+
+#left-zone .list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+#left-zone .list::-webkit-scrollbar-thumb {
+    background: var(--border-glow);
+    border-radius: 10px;
+}
+
+#left-zone .list::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+#left-zone .list li.item {
+    width: 100%;
+}
+
+#left-zone .list li.item input[type="radio"] {
+    display: none;
+}
+
+#left-zone .list li.item label {
+    display: block;
+    opacity: 0.5;
+    height: 50px;
+    text-align: left;
+    line-height: 50px;
+    padding-left: 80px;
+    color: var(--text-muted);
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+#left-zone .list li.item label:hover {
+    opacity: 0.75;
+}
+
+#left-zone .list li.item input[type="radio"]:checked ~ label {
+    opacity: 1;
+    color: var(--text-light);
+    border-right: solid 4px var(--primary-color);
+}
+
+#left-zone .list li.item .content {
+    position: absolute;
+    left: 350px;
+    top: 0;
+    width: calc(100% - 350px);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s ease;
+}
+
+#left-zone .list li.item input[type="radio"]:checked ~ .content {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#left-zone .list li.item .content .picto {
+    height: 180px;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 1.5rem;
+    border-radius: 0 24px 0 0;
+    flex-shrink: 0;
+}
+
+#left-zone .list li.item .content h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--text-light);
+    text-transform: capitalize;
+}
+
+#left-zone .list li.item .content p {
+    max-width: 60%;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+#middle-border {
+    background-color: var(--border-glow);
+    height: 75%;
+    flex-grow: 1;
+    max-width: 2px;
+    z-index: 0;
+}
+
+#right-zone {
+    background: var(--bg-darker);
+    height: 100%;
+    flex-grow: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+#right-zone::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 50%, rgba(128,195,253,0.08) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    #scene {
+        flex-direction: column;
+        height: auto;
+        min-height: 500px;
+    }
+    #left-zone {
+        width: 100%;
+        height: auto;
+    }
+    #left-zone .list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    #left-zone .list li.item label {
+        padding: 1rem 1.5rem;
+        text-align: center;
+    }
+    #middle-border {
+        width: 100%;
+        height: 2px;
+        max-width: none;
+    }
+    #left-zone .list li.item .content {
+        position: relative;
+        left: 0;
+        top: 0;
+        width: 100%;
+        padding: 2rem;
+    }
+    #left-zone .list li.item .content .picto {
+        border-radius: 16px;
+        height: 200px;
+    }
+}
+
 /* ─── Contact Section ───────────────────────── */
 .contact {
     padding: 7rem 2.5rem;
@@ -1128,6 +1331,8 @@ h1, h2, h3, h4 {
 
 .contact-form::before {
     content: '';
+}
+.contact-form::after {
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 3px;
