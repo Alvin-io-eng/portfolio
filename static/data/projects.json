@@ -29,6 +29,12 @@
       "description": "A basic car dealership website demonstrating vehicle listings and customer inquiries.",
       "image": "./static/img/projects/premier-motors.png",
       "link": "https://car-dealership-demo-zxkp.bolt.host/"
+    },
+    {
+      "title": "Medify",
+      "description": "A Web3 + AI solution to fight fake drugs in the pharmaceutical industry.",
+      "image": "./static/img/projects/medify.png",
+      "link": "https://medify-system-ten.vercel.app/"
     }
   ]
 }
