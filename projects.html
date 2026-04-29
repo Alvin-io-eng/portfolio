@@ -493,97 +493,16 @@
     }
 
     // ===== PROJECTS DATA =====
-    const projects = [
-        {
-            id: 1,
-            title: "AiVana",
-            description: "AI-powered HR automation platform that streamlines employee management, recruitment, and performance tracking.",
-            date: "2025",
-            category: "saas",
-            image: "https://picsum.photos/id/1/800/500",
-            link: "https://aivana.ai"
-        },
-        {
-            id: 2,
-            title: "TaskFlow Pro",
-            description: "Project management tool with real-time collaboration, Kanban boards, and automated workflow features.",
-            date: "2025",
-            category: "saas",
-            image: "https://picsum.photos/id/20/800/500",
-            link: null
-        },
-        {
-            id: 3,
-            title: "CodeSnippet",
-            description: "Developer-focused code snippet manager with syntax highlighting, tags, and cloud sync.",
-            date: "2024",
-            category: "tools",
-            image: "https://picsum.photos/id/48/800/500",
-            link: "https://codesnippet.dev"
-        },
-        {
-            id: 4,
-            title: "E-Commerce Platform",
-            description: "Full-featured online store with payment integration, inventory management, and analytics dashboard.",
-            date: "2024",
-            category: "webapp",
-            image: "https://picsum.photos/id/96/800/500",
-            link: "https://shop-demo.com"
-        },
-        {
-            id: 5,
-            title: "ChatBot Builder",
-            description: "No-code chatbot creation platform with AI natural language processing and multi-channel deployment.",
-            date: "2024",
-            category: "saas",
-            image: "https://picsum.photos/id/60/800/500",
-            link: null
-        },
-        {
-            id: 6,
-            title: "DataViz Dashboard",
-            description: "Interactive data visualization tool for business analytics with customizable charts and real-time updates.",
-            date: "2024",
-            category: "tools",
-            image: "https://picsum.photos/id/80/800/500",
-            link: "https://dataviz.io"
-        },
-        {
-            id: 7,
-            title: "Social Media Manager",
-            description: "Schedule posts, analyze engagement, and manage multiple social accounts from one unified dashboard.",
-            date: "2024",
-            category: "webapp",
-            image: "https://picsum.photos/id/119/800/500",
-            link: "https://socialmanager.app"
-        },
-        {
-            id: 8,
-            title: "API Documentation Tool",
-            description: "Auto-generate beautiful API docs from code comments with interactive try-it-out console.",
-            date: "2023",
-            category: "tools",
-            image: "https://picsum.photos/id/180/800/500",
-            link: "https://apidocs.dev"
-        },
-        {
-            id: 9,
-            title: "Portfolio Generator",
-            description: "Create stunning developer portfolios in minutes with customizable themes and GitHub integration.",
-            date: "2023",
-            category: "webapp",
-            image: "https://picsum.photos/id/96/800/500",
-            link: null
-        }
-    ];
+    let projects = [];
 
     // ===== BUILD PROJECT CARD =====
     function buildProjectCard(project) {
         const card = document.createElement('div');
         card.className = 'blog-card scroll-animate';
-        card.dataset.category = project.category;
+        const projectCategory = project.category ? project.category.toLowerCase().trim() : 'other';
+        card.dataset.category = projectCategory;
 
-        const linkHref = project.link ? project.link : null;
+        const linkHref = project.link && project.link !== '#' ? project.link : null;
         const linkTarget = linkHref ? 'target="_blank" rel="noopener"' : '';
 
         card.innerHTML = `
@@ -598,8 +517,8 @@
             </div>
             <div class="blog-content">
                 <div class="blog-meta">
-                    <span><i class="fas fa-folder"></i> ${project.category}</span>
-                    <span><i class="fas fa-calendar"></i> ${project.date}</span>
+                    <span><i class="fas fa-folder"></i> ${project.category || 'Project'}</span>
+                    <span><i class="fas fa-calendar"></i> ${project.date || '2025'}</span>
                 </div>
                 <h3 class="blog-title">${project.title}</h3>
                 <p class="blog-excerpt">${project.description}</p>
@@ -630,6 +549,38 @@
         initScrollAnimations();
     }
 
+    // ===== GENERATE CATEGORY FILTERS =====
+    function generateCategoryFilters() {
+        const categories = ['all'];
+        projects.forEach(p => {
+            if (p.category) {
+                const cat = p.category.toLowerCase().trim();
+                if (!categories.includes(cat)) {
+                    categories.push(cat);
+                }
+            }
+        });
+        
+        const filtersContainer = document.getElementById('category-filters');
+        if (!filtersContainer) return;
+        
+        filtersContainer.innerHTML = '';
+        categories.forEach(cat => {
+            const btn = document.createElement('button');
+            btn.className = cat === 'all' ? 'category-btn active' : 'category-btn';
+            btn.dataset.category = cat;
+            
+            let displayName = 'All Projects';
+            if (cat !== 'all') {
+                if (cat === 'saas') displayName = 'SaaS';
+                else displayName = cat.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+            }
+            btn.textContent = displayName;
+            
+            filtersContainer.appendChild(btn);
+        });
+    }
+
     // ===== FILTER PROJECTS =====
     function initProjectFilters() {
         const buttons = document.querySelectorAll('.category-btn');
@@ -646,11 +597,30 @@
                 if (category === 'all') {
                     displayProjects(projects);
                 } else {
-                    const filtered = projects.filter(p => p.category === category);
+                    const filtered = projects.filter(p => p.category && p.category.toLowerCase().trim() === category);
                     displayProjects(filtered);
                 }
             });
         });
+    }
+
+    // ===== LOAD PROJECTS JSON =====
+    async function loadProjects() {
+        try {
+            const response = await fetch('./static/data/projects.json');
+            const data = await response.json();
+            projects = data.projects;
+            
+            generateCategoryFilters();
+            displayProjects(projects);
+            initProjectFilters();
+        } catch (error) {
+            console.error('Error loading projects:', error);
+            const container = document.getElementById('projectsGrid');
+            if (container) {
+                container.innerHTML = '<p style="text-align:center; width:100%; color:var(--text-muted);">Failed to load projects data.</p>';
+            }
+        }
     }
 
     // ===== INITIALIZE =====
@@ -663,8 +633,7 @@
         initScrollAnimations();
         
         // Load projects
-        displayProjects(projects);
-        initProjectFilters();
+        loadProjects();
 
         // Navbar scroll effect
         window.addEventListener('scroll', handleNavbarScroll, { passive: true });
