@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Projects — Alvin Immanuel</title>
-    <meta name="description" content="Browse all projects by Alvin Immanuel — Fullstack Developer & SaaS Entrepreneur">
+    <title>All Projects — Alvin Immanuel | Fullstack Developer & SaaS Entrepreneur</title>
+    <meta name="description" content="Browse all projects by Alvin Immanuel — Fullstack Developer & SaaS Entrepreneur featuring web apps, SaaS products, and tools.">
     <link rel="icon" href="./static/img/monogram/monogram-hq.png" sizes="32x32" type="image/png">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,67 +13,663 @@
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <!-- Styles -->
-    <link rel="stylesheet" href="./static/css/style.css">
-    <link rel="stylesheet" href="./static/css/projects.css">
+    <style>
+        /* ===== GLOBAL STYLES (inherited from blog.html design system) ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --primary-color: #80c3fd;
+            --primary-glow: rgba(128, 195, 253, 0.35);
+            --accent-color: #d4c628;
+            --accent-glow: rgba(212, 198, 40, 0.3);
+            --bg-dark: #0b161d;
+            --bg-darker: #080f14;
+            --bg-card: #0e202f;
+            --bg-card-hover: #132940;
+            --text-light: #eef2f7;
+            --text-muted: #8899aa;
+            --border-glow: rgba(128, 195, 253, 0.15);
+            --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Syne', sans-serif;
+        }
+        /* custom cursor (same as portfolio) */
+        *, *::before, *::after { cursor: none !important; }
+        .cursor-dot {
+            position: fixed; width: 8px; height: 8px; background: var(--primary-color);
+            border-radius: 50%; pointer-events: none; z-index: 99999;
+            transform: translate(-50%, -50%); transition: transform 0.1s ease;
+        }
+        .cursor-ring {
+            position: fixed; width: 36px; height: 36px; border: 2px solid var(--primary-color);
+            border-radius: 50%; pointer-events: none; z-index: 99998;
+            transition: transform 0.18s ease, width 0.25s, height 0.25s, border-color 0.25s;
+            transform: translate(-50%, -50%); opacity: 0.6;
+        }
+        .cursor-ring.hovering { width: 56px; height: 56px; border-color: var(--accent-color); opacity: 0.9; }
+        /* scroll progress */
+        .scroll-progress {
+            position: fixed; top: 0; left: 0; height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            z-index: 9999; width: 0%; transition: width 0.1s linear;
+        }
+        /* particles background */
+        .particles {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0;
+        }
+        .particle {
+            position: absolute; border-radius: 50%; opacity: 0;
+            animation: particleDrift linear infinite;
+        }
+        @keyframes particleDrift {
+            0% { opacity: 0; transform: translateY(0) scale(0); }
+            10% { opacity: 0.6; transform: scale(1); }
+            90% { opacity: 0.3; }
+            100% { opacity: 0; transform: translateY(-100vh) scale(0.5); }
+        }
+        /* navbar */
+        .navbar {
+            position: fixed; top: 0; width: 100%; padding: 1.1rem 2.5rem;
+            background: rgba(8, 15, 20, 0.7); backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border-glow); z-index: 1000;
+            transition: var(--transition);
+        }
+        .navbar.scrolled { background: rgba(8, 15, 20, 0.95); padding: 0.8rem 2.5rem; box-shadow: 0 8px 40px rgba(0,0,0,0.4); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .brand { font-family: 'Syne', sans-serif; font-size: 1.7rem; font-weight: 800; text-decoration: none; color: var(--text-light); letter-spacing: -0.02em; }
+        .brand .highlight { background: var(--accent-color); color: var(--bg-dark); padding: 0.15rem 0.45rem; border-radius: 50%; margin-right: 0.15rem; display: inline-block; animation: brandPulse 3s ease-in-out infinite; }
+        @keyframes brandPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.08) rotate(-3deg)} }
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; transition: var(--transition); padding: 0.4rem 0; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--accent-color); transition: width 0.3s ease; }
+        .nav-links a:hover, .nav-links a.active { color: var(--text-light); }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; }
+        .hamburger span { width: 26px; height: 2px; background: var(--text-light); transition: var(--transition); }
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        
+        /* projects hero - matching blog-hero */
+        .blog-hero {
+            padding: 10rem 2rem 5rem;
+            background: var(--bg-darker);
+            text-align: center;
+            position: relative;
+        }
+        .blog-hero::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+        }
+        .blog-hero h1 {
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--text-light), var(--primary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .blog-subhead {
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 1rem auto 0;
+            font-size: 1.1rem;
+        }
+        
+        /* projects grid - matching blog-grid */
+        .blog-container {
+            max-width: 1300px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+        
+        /* project card - matching blog-card styling */
+        .blog-card {
+            background: var(--bg-card);
+            border-radius: 24px;
+            border: 1px solid var(--border-glow);
+            overflow: hidden;
+            transition: var(--transition);
+            transform: translateY(0);
+            backdrop-filter: blur(2px);
+        }
+        .blog-card:hover {
+            transform: translateY(-12px);
+            border-color: rgba(128,195,253,0.4);
+            box-shadow: 0 25px 45px rgba(0,0,0,0.4);
+            background: var(--bg-card-hover);
+        }
+        
+        /* project image - matching blog-img */
+        .blog-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .blog-card:hover .blog-img {
+            transform: scale(1.03);
+        }
+        
+        /* project content - matching blog-content */
+        .blog-content {
+            padding: 1.6rem;
+        }
+        
+        /* project meta - matching blog-meta */
+        .blog-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.75rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+        }
+        
+        /* project title - matching blog-title */
+        .blog-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+        
+        /* project description - matching blog-excerpt */
+        .blog-excerpt {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* read more button - matching read-more */
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px solid transparent;
+            transition: 0.2s;
+        }
+        .read-more:hover {
+            gap: 0.8rem;
+            border-bottom-color: var(--primary-color);
+        }
+        
+        /* project image overlay for hover popup */
+        .project-image-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(8, 15, 20, 0.82);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            backdrop-filter: blur(4px);
+        }
+        .blog-card:hover .project-image-overlay { 
+            opacity: 1; 
+        }
+        
+        .overlay-view-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.5rem;
+            border: 2px solid var(--primary-color);
+            border-radius: 50px;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.88rem;
+            text-decoration: none;
+            transition: var(--transition);
+            transform: translateY(8px);
+        }
+        .blog-card:hover .overlay-view-btn {
+            transform: translateY(0);
+        }
+        .overlay-view-btn:hover {
+            background: var(--primary-color);
+            color: var(--bg-dark);
+        }
+        .overlay-view-btn.coming-soon {
+            opacity: 0.5;
+            cursor: default;
+            border-color: var(--text-muted);
+            color: var(--text-muted);
+        }
+        
+        /* categories & filter - matching blog-categories */
+        .blog-categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-bottom: 3rem;
+        }
+        .category-btn {
+            background: transparent;
+            border: 1px solid var(--border-glow);
+            padding: 0.5rem 1.4rem;
+            border-radius: 40px;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+        }
+        .category-btn.active, .category-btn:hover {
+            background: var(--primary-color);
+            color: var(--bg-dark);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 12px var(--primary-glow);
+        }
+        
+        /* footer same style */
+        .footer {
+            background: var(--bg-darker);
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-glow);
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+        
+        /* responsive */
+        @media (max-width: 900px) {
+            .blog-grid { gap: 1.5rem; }
+            .navbar .nav-container { padding: 0; }
+        }
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .nav-links {
+                position: fixed; top: 0; right: 0; width: 280px; height: 100vh;
+                background: rgba(8,15,20,0.98); backdrop-filter: blur(30px);
+                flex-direction: column; justify-content: center; gap: 2rem;
+                padding: 2rem; transform: translateX(100%);
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                border-left: 1px solid var(--border-glow);
+                z-index: 1050;
+            }
+            .nav-links.mobile-open { transform: translateX(0); }
+            .nav-links a { font-size: 1.1rem; color: var(--text-light); }
+        }
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Background Particles -->
-    <div class="particles" id="particles"></div>
+<div class="particles" id="particles"></div>
+<div class="scroll-progress" id="scroll-progress-bar"></div>
 
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="brand">
-                <span class="highlight">O</span>uma
-            </a>
-            <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu">
-                <span></span><span></span><span></span>
-            </button>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="index.html#about">About Me</a></li>
-                <li><a href="index.html#skills">My Skills</a></li>
-                <li><a href="index.html#projects" class="active">Projects</a></li>
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="brand">
+            <span class="highlight">O</span>uma
+        </a>
+        <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">About Me</a></li>
+            <li><a href="index.html#skills">My Skills</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
             <li><a href="blog.html">Blog</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
 
-    <!-- Projects Page -->
-    <section class="projects-page">
-        <div class="projects-page-header">
-            <span class="section-tag-center">The full collection</span>
-            <h1>All <span style="color: var(--primary-color);">Projects</span></h1>
-            <p>Every project I've poured my skills and passion into</p>
-        </div>
+<section class="blog-hero scroll-animate">
+    <h1>All Projects</h1>
+    <p class="blog-subhead">Every project I've poured my skills and passion into — from SaaS products to web applications and tools.</p>
+</section>
 
-        <!-- Filter Bar -->
-        <div class="project-filters">
-            <button class="filter-btn active">All</button>
-            <button class="filter-btn">Web Apps</button>
-            <button class="filter-btn">SaaS</button>
-            <button class="filter-btn">Tools</button>
-        </div>
+<div class="blog-container">
+    <!-- Categories filter -->
+    <div class="blog-categories" id="category-filters">
+        <button class="category-btn active" data-category="all">All Projects</button>
+        <button class="category-btn" data-category="saas">SaaS</button>
+        <button class="category-btn" data-category="webapp">Web Apps</button>
+        <button class="category-btn" data-category="tools">Tools</button>
+    </div>
 
-        <!-- Projects Grid -->
-        <div class="all-projects-grid" id="all-projects-container">
-            <!-- Dynamically loaded -->
-        </div>
+    <!-- Projects Grid -->
+    <div class="blog-grid" id="projectsGrid"></div>
+</div>
 
-        <div class="back-home-wrap">
-            <a href="index.html" class="back-to-home">
-                <i class="fas fa-arrow-left"></i> Back to Home
-            </a>
-        </div>
-    </section>
+<footer class="footer">
+    <p>&copy; 2025 Designed by A.Israel &amp; Developed by A.Immanuel. All rights reserved. | <i class="fas fa-code"></i> Projects Edition</p>
+</footer>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2025 Designed by A.Israel &amp; Developed by A.Immanuel. All rights reserved.</p>
-    </footer>
+<script>
+    // ===== CUSTOM CURSOR =====
+    function initCustomCursor() {
+        const dot  = document.createElement('div');
+        const ring = document.createElement('div');
+        dot.className  = 'cursor-dot';
+        ring.className = 'cursor-ring';
+        document.body.appendChild(dot);
+        document.body.appendChild(ring);
 
-    <script src="./static/js/main.js"></script>
+        let mouseX = 0, mouseY = 0;
+        let ringX  = 0, ringY  = 0;
+
+        document.addEventListener('mousemove', e => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            dot.style.left = mouseX + 'px';
+            dot.style.top  = mouseY + 'px';
+        });
+
+        function animateRing() {
+            ringX += (mouseX - ringX) * 0.12;
+            ringY += (mouseY - ringY) * 0.12;
+            ring.style.left = ringX + 'px';
+            ring.style.top  = ringY + 'px';
+            requestAnimationFrame(animateRing);
+        }
+        animateRing();
+
+        const hoverTargets = 'a, button, .blog-card, .category-btn, .overlay-view-btn';
+        document.addEventListener('mouseover', e => {
+            if (e.target.closest(hoverTargets)) ring.classList.add('hovering');
+        });
+        document.addEventListener('mouseout', e => {
+            if (e.target.closest(hoverTargets)) ring.classList.remove('hovering');
+        });
+
+        document.addEventListener('mouseleave', () => { dot.style.opacity = '0'; ring.style.opacity = '0'; });
+        document.addEventListener('mouseenter', () => { dot.style.opacity = '1'; ring.style.opacity = ''; });
+    }
+
+    // ===== SCROLL PROGRESS BAR =====
+    function initScrollProgress() {
+        const bar = document.createElement('div');
+        bar.className = 'scroll-progress';
+        document.body.prepend(bar);
+
+        window.addEventListener('scroll', () => {
+            const max = document.documentElement.scrollHeight - window.innerHeight;
+            const pct = (window.scrollY / max) * 100;
+            bar.style.width = pct + '%';
+        }, { passive: true });
+    }
+
+    // ===== PARTICLES =====
+    function createParticles() {
+        const container = document.getElementById('particles');
+        if (!container) return;
+        container.innerHTML = '';
+
+        const count = window.innerWidth < 600 ? 20 : 40;
+        const colors = ['#80c3fd', '#d4c628', '#4facfe', '#667eea'];
+
+        for (let i = 0; i < count; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            const size = Math.random() * 3 + 1;
+            p.style.cssText = `
+                left: ${Math.random() * 100}%;
+                top: ${Math.random() * 100}%;
+                width: ${size}px;
+                height: ${size}px;
+                background: ${colors[Math.floor(Math.random() * colors.length)]};
+                animation-duration: ${Math.random() * 15 + 10}s;
+                animation-delay: ${Math.random() * 10}s;
+            `;
+            container.appendChild(p);
+        }
+    }
+
+    // ===== NAVBAR =====
+    function handleNavbarScroll() {
+        const navbar = document.getElementById('navbar');
+        if (!navbar) return;
+        navbar.classList.toggle('scrolled', window.scrollY > 80);
+    }
+
+    // ===== HAMBURGER MENU =====
+    function initHamburger() {
+        const btn = document.getElementById('hamburger-btn');
+        const links = document.querySelector('.nav-links');
+        if (!btn || !links) return;
+
+        btn.addEventListener('click', () => {
+            btn.classList.toggle('open');
+            links.classList.toggle('mobile-open');
+        });
+
+        links.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                btn.classList.remove('open');
+                links.classList.remove('mobile-open');
+            });
+        });
+    }
+
+    // ===== SCROLL ANIMATIONS =====
+    function initScrollAnimations() {
+        const elements = document.querySelectorAll('.scroll-animate');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        elements.forEach(el => observer.observe(el));
+    }
+
+    // ===== PROJECTS DATA =====
+    const projects = [
+        {
+            id: 1,
+            title: "AiVana",
+            description: "AI-powered HR automation platform that streamlines employee management, recruitment, and performance tracking.",
+            date: "2025",
+            category: "saas",
+            image: "https://picsum.photos/id/1/800/500",
+            link: "https://aivana.ai"
+        },
+        {
+            id: 2,
+            title: "TaskFlow Pro",
+            description: "Project management tool with real-time collaboration, Kanban boards, and automated workflow features.",
+            date: "2025",
+            category: "saas",
+            image: "https://picsum.photos/id/20/800/500",
+            link: null
+        },
+        {
+            id: 3,
+            title: "CodeSnippet",
+            description: "Developer-focused code snippet manager with syntax highlighting, tags, and cloud sync.",
+            date: "2024",
+            category: "tools",
+            image: "https://picsum.photos/id/48/800/500",
+            link: "https://codesnippet.dev"
+        },
+        {
+            id: 4,
+            title: "E-Commerce Platform",
+            description: "Full-featured online store with payment integration, inventory management, and analytics dashboard.",
+            date: "2024",
+            category: "webapp",
+            image: "https://picsum.photos/id/96/800/500",
+            link: "https://shop-demo.com"
+        },
+        {
+            id: 5,
+            title: "ChatBot Builder",
+            description: "No-code chatbot creation platform with AI natural language processing and multi-channel deployment.",
+            date: "2024",
+            category: "saas",
+            image: "https://picsum.photos/id/60/800/500",
+            link: null
+        },
+        {
+            id: 6,
+            title: "DataViz Dashboard",
+            description: "Interactive data visualization tool for business analytics with customizable charts and real-time updates.",
+            date: "2024",
+            category: "tools",
+            image: "https://picsum.photos/id/80/800/500",
+            link: "https://dataviz.io"
+        },
+        {
+            id: 7,
+            title: "Social Media Manager",
+            description: "Schedule posts, analyze engagement, and manage multiple social accounts from one unified dashboard.",
+            date: "2024",
+            category: "webapp",
+            image: "https://picsum.photos/id/119/800/500",
+            link: "https://socialmanager.app"
+        },
+        {
+            id: 8,
+            title: "API Documentation Tool",
+            description: "Auto-generate beautiful API docs from code comments with interactive try-it-out console.",
+            date: "2023",
+            category: "tools",
+            image: "https://picsum.photos/id/180/800/500",
+            link: "https://apidocs.dev"
+        },
+        {
+            id: 9,
+            title: "Portfolio Generator",
+            description: "Create stunning developer portfolios in minutes with customizable themes and GitHub integration.",
+            date: "2023",
+            category: "webapp",
+            image: "https://picsum.photos/id/96/800/500",
+            link: null
+        }
+    ];
+
+    // ===== BUILD PROJECT CARD =====
+    function buildProjectCard(project) {
+        const card = document.createElement('div');
+        card.className = 'blog-card scroll-animate';
+        card.dataset.category = project.category;
+
+        const linkHref = project.link ? project.link : null;
+        const linkTarget = linkHref ? 'target="_blank" rel="noopener"' : '';
+
+        card.innerHTML = `
+            <div class="project-image" style="position: relative; height: 220px; overflow: hidden;">
+                <img src="${project.image}" alt="${project.title}" class="blog-img" style="width: 100%; height: 100%; object-fit: cover;">
+                <div class="project-image-overlay">
+                    ${linkHref
+                        ? `<a href="${project.link}" ${linkTarget} class="overlay-view-btn"><i class="fas fa-external-link-alt"></i> View Live</a>`
+                        : `<span class="overlay-view-btn coming-soon"><i class="fas fa-clock"></i> Coming Soon</span>`
+                    }
+                </div>
+            </div>
+            <div class="blog-content">
+                <div class="blog-meta">
+                    <span><i class="fas fa-folder"></i> ${project.category}</span>
+                    <span><i class="fas fa-calendar"></i> ${project.date}</span>
+                </div>
+                <h3 class="blog-title">${project.title}</h3>
+                <p class="blog-excerpt">${project.description}</p>
+                ${linkHref
+                    ? `<a href="${project.link}" ${linkTarget} class="read-more"><i class="fas fa-arrow-right"></i> View Project</a>`
+                    : `<span class="read-more" style="opacity: 0.5; cursor: default;"><i class="fas fa-clock"></i> Coming Soon</span>`
+                }
+            </div>
+        `;
+        
+        // Add scroll animation delay
+        card.style.animationDelay = `${Math.random() * 0.3}s`;
+        
+        return card;
+    }
+
+    // ===== DISPLAY PROJECTS =====
+    function displayProjects(projectList) {
+        const container = document.getElementById('projectsGrid');
+        if (!container) return;
+
+        container.innerHTML = '';
+        projectList.forEach(project => {
+            container.appendChild(buildProjectCard(project));
+        });
+
+        // Re-init scroll animations for new cards
+        initScrollAnimations();
+    }
+
+    // ===== FILTER PROJECTS =====
+    function initProjectFilters() {
+        const buttons = document.querySelectorAll('.category-btn');
+        
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active state
+                buttons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const category = btn.dataset.category;
+
+                // Filter projects
+                if (category === 'all') {
+                    displayProjects(projects);
+                } else {
+                    const filtered = projects.filter(p => p.category === category);
+                    displayProjects(filtered);
+                }
+            });
+        });
+    }
+
+    // ===== INITIALIZE =====
+    document.addEventListener('DOMContentLoaded', () => {
+        initCustomCursor();
+        initScrollProgress();
+        createParticles();
+        handleNavbarScroll();
+        initHamburger();
+        initScrollAnimations();
+        
+        // Load projects
+        displayProjects(projects);
+        initProjectFilters();
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', handleNavbarScroll, { passive: true });
+    });
+</script>
+
 </body>
 </html>
