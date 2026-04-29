@@ -1,38 +1,56 @@
 {
   "projects": [
     {
+      "id": 1,
       "title": "AiVana SaaS App",
       "description": "An intelligent SaaS application that streamlines HR processes and employee monitoring with advanced AI capabilities.",
+      "date": "2025",
+      "category":"Saas",
       "image": "./static/img/projects/aivana.png",
       "link": "https://aivanawebsite.vercel.app/"
     },
     {
+      "id": 2,
       "title": "Lit Calculator App",
       "description": "A modern, feature-rich calculator application with advanced mathematical functions and intuitive design.",
+      "date": "2025",
+      "category": "Mobile app",
       "image": "./static/img/projects/calculator.png",
       "link": "#"
     },
     {
+      "id": 3,
       "title": "Shake-Up Kitchen App",
       "description": "A comprehensive restaurant management system that boosted business operations and customer engagement.",
+      "date":"2025",
+      "category":"Website",
       "image": "./static/img/projects/shakeup-kitchen.png",
       "link": "https://shakeup-kitchen.vercel.app"
     },
     {
+      "id": 4,
       "title": "Three JS Portfolio",
       "description": "A visually stunning portfolio website built with Three.js to showcase 3D graphics and interactive elements.",
+      "date":"2025",
+      "category": "Website",
       "image": "./static/img/projects/threejs-portfolio.png",
       "link": "https://threejs-techwebsite.vercel.app/"
     },
     {
+      "id": 5,
       "title": "Premier Motors",
       "description": "A basic car dealership website demonstrating vehicle listings and customer inquiries.",
+      "date":"2025",
+      "category": "Web App",
       "image": "./static/img/projects/premier-motors.png",
       "link": "https://car-dealership-demo-zxkp.bolt.host/"
     },
     {
+      "id":6,
       "title": "Medify",
       "description": "A Web3 + AI solution to fight fake drugs in the pharmaceutical industry.",
+      "date":"2026",
+      "category":"Saas", 
       "image": "./static/img/projects/medify.png",
       "link": "https://medify-system-ten.vercel.app/"
     }
