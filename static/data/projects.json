@@ -55,7 +55,7 @@
       "title": "Mpesa API Integration",
       "description": "Implementing both STK push and Callback so as to verify payment trasactions via Mpesa",
       "date":"2025",
-      "category":"API", 
+      "category":"API & Scripts", 
       "image": "./static/img/projects/mpesa.jpeg",
       "link": "#",
       "codeLink": "https://github.com/Alvin-io-eng/mpesa/"
@@ -69,6 +69,16 @@
       "image": "./static/img/projects/personal-progress.png",
       "link": "#",
       "codeLink": "https://github.com/Alvin-io-eng/Personal-Progress-Tracking-app"
+    },
+    {
+      "id":8,
+      "title": "Forex Indicator Dashboard",
+      "description": "A Pine Script code that provides real-time forex market data and technical indicators to assist traders in making informed decisions.",
+      "date":"2026",
+      "category":"API & Scripts", 
+      "image": "./static/img/projects/forex.jpeg",
+      "link": "#",
+      "codeLink": "https://github.com/Alvin-io-eng/forex-automation-trading-view-"
     }
   ]
 }
