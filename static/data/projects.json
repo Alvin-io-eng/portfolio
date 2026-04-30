@@ -139,6 +139,26 @@
       "image": "./static/img/projects/webPortfolio.png",
       "link": "https://web-portfolio-three-omega.vercel.app/",
       "codeLink": "https://github.com/Alvin-io-eng/webPortfolio/"
+    },
+    {
+      "id":15,
+      "title": "Solar Radiation Preiction Model",
+      "description": "A ML model the help predict solar radiation where sensors fail to provide correct values due to degradation over time.",
+      "date":"2026",
+      "category":"AI & ML", 
+      "image": "./static/img/projects/solarRadiation.jpeg",
+      "link": "#",
+      "codeLink": "https://github.com/Alvin-io-eng/SolarRadiationPred/"
+    },
+    {
+      "id":16,
+      "title": "Innovtion Hub Manager",
+      "description": "A web application that help manage a Hub space where users can book spaces & computers, manage their bookings and also manage the hub space as an admin.",
+      "date":"2026",
+      "category":"Web App", 
+      "image": "./static/img/projects/hubManager.png",
+      "link": "https://hub-onepager.vercel.app/",
+      "codeLink": "https://github.com/Alvin-io-eng/hub-onepager/"
     }
   ]
 }
