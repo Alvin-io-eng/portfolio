@@ -66,7 +66,7 @@
       "description": "Personal webapp tailor made to track my progress in followin a schedule/ timetable and also track my progress in learning a new skill",
       "date":"2025",
       "category":"Web App", 
-      "image": "./static/img/projects/mpesa.jpeg",
+      "image": "./static/img/projects/personal-progress.png",
       "link": "#",
       "codeLink": "https://github.com/Alvin-io-eng/Personal-Progress-Tracking-app"
     }
