@@ -78,7 +78,67 @@
       "category":"API & Scripts", 
       "image": "./static/img/projects/forex.jpeg",
       "link": "#",
-      "codeLink": "https://github.com/Alvin-io-eng/forex-automation-trading-view-"
+      "codeLink": "https://github.com/Alvin-io-eng/forex-automation-trading-view-/"
+    },
+    {
+      "id":9,
+      "title": "iTech",
+      "description": "Our company website built with TailwindCSS, showcasing our services and projects in the tech industry.",
+      "date":"2026",
+      "category":"Website", 
+      "image": "./static/img/projects/iTech.png",
+      "link": "https://itech-ebon-eight.vercel.app/",
+      "codeLink": "https://github.com/Alvin-io-eng/itech/"
+    },
+    {
+      "id":10,
+      "title": "Kucode",
+      "description": "A website for a coding bootcamp built with TailwindCSS, providing information about courses, instructors, and enrollment.",
+      "date":"2025",
+      "category":"Website", 
+      "image": "./static/img/projects/kucode.png",
+      "link": "https://kucode.vercel.app/",
+      "codeLink": "https://github.com/Alvin-io-eng/kucode/"
+    },
+    {
+      "id":11,
+      "title": "CampusDive",
+      "description": "A design for a social media website for students built with TailwindCSS, offering a platform for sharing campus news, events, and student life experiences.",
+      "date":"2026",
+      "category":"Website", 
+      "image": "./static/img/projects/campus-dive.png",
+      "link": "https://campusdive-ui-pages.vercel.app/",
+      "codeLink": "https://github.com/Alvin-io-eng/campusdive-UI-pages/"
+    },
+    {
+      "id":12,
+      "title": "Lexhub",
+      "description": "A web application that will act as a github for lawyers & law firms where they can organise their matters under clients.",
+      "date":"2026",
+      "category":"Saas", 
+      "image": "./static/img/projects/lexhub.png",
+      "link": "#",
+      "codeLink": "https://github.com/Alvin-io-eng/lexhub/"
+    },
+    {
+      "id":13,
+      "title": "Skill 2 Career",
+      "description": "A Machine Learning model that will predict the best career path for an individual based on their skills, experience and interests.",
+      "date":"2026",
+      "category":"AI & ML", 
+      "image": "./static/img/projects/occupation.jpeg",
+      "link": "#",
+      "codeLink": "https://github.com/Alvin-io-eng/occupationPredictionModel/"
+    },
+    {
+      "id":14,
+      "title": "WebDev Pro",
+      "description": "A modern website portfolio built with React and TailwindCSS, showcasing my skills, projects, and experience for commercial purposes.",
+      "date":"2025",
+      "category":"Website", 
+      "image": "./static/img/projects/webPortfolio.png",
+      "link": "https://web-portfolio-three-omega.vercel.app/",
+      "codeLink": "https://github.com/Alvin-io-eng/webPortfolio/"
     }
   ]
 }
