@@ -26,7 +26,7 @@
         }
         animateRing();
 
-        const hoverTargets = 'a, button, .blog-card, .category-btn, .overlay-view-btn';
+        const hoverTargets = 'a, button, .blog-card, .category-btn, .overlay-view-btn, .page-link';
         document.addEventListener('mouseover', e => {
             if (e.target.closest(hoverTargets)) ring.classList.add('hovering');
         });
@@ -121,6 +121,11 @@
     // ===== PROJECTS DATA =====
     let projects = [];
 
+    // Filtering & Pagination state
+    let activeCategory = "all";
+    let currentPage = 1;
+    const PROJECTS_PER_PAGE = 6;
+
     // ===== BUILD PROJECT CARD =====
     function buildProjectCard(project) {
         const card = document.createElement('div');
@@ -175,6 +180,71 @@
         initScrollAnimations();
     }
 
+    // Get filtered projects
+    function getFilteredProjects() {
+        if (activeCategory === "all") return [...projects];
+        return projects.filter(p => p.category && p.category.toLowerCase().trim() === activeCategory);
+    }
+
+    // Get paginated projects
+    function getPaginatedProjects() {
+        const filtered = getFilteredProjects();
+        const start = (currentPage - 1) * PROJECTS_PER_PAGE;
+        const end = start + PROJECTS_PER_PAGE;
+        return filtered.slice(start, end);
+    }
+
+    // Render project cards with pagination
+    function renderProjectCards() {
+        const container = document.getElementById('projectsGrid');
+        if (!container) return;
+        
+        const projectsToShow = getPaginatedProjects();
+        if (projectsToShow.length === 0) {
+            container.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:3rem; color:var(--text-muted);"><i class="fas fa-code"></i> No projects in this category yet. Check back soon!</div>`;
+            return;
+        }
+        
+        container.innerHTML = '';
+        projectsToShow.forEach(project => {
+            container.appendChild(buildProjectCard(project));
+        });
+
+        // Re-init scroll animations for new cards
+        initScrollAnimations();
+    }
+
+    // Pagination controls
+    function renderPagination() {
+        const paginationDiv = document.getElementById('paginationControls');
+        if (!paginationDiv) return;
+        
+        const filtered = getFilteredProjects();
+        const totalPages = Math.ceil(filtered.length / PROJECTS_PER_PAGE);
+        if (totalPages <= 1) {
+            paginationDiv.innerHTML = '';
+            return;
+        }
+        
+        let paginationHtml = '';
+        for (let i = 1; i <= totalPages; i++) {
+            paginationHtml += `<button class="page-link ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+        }
+        paginationDiv.innerHTML = paginationHtml;
+        
+        document.querySelectorAll('.page-link').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const page = parseInt(btn.getAttribute('data-page'));
+                if (!isNaN(page) && page !== currentPage) {
+                    currentPage = page;
+                    renderProjectCards();
+                    renderPagination();
+                    window.scrollTo({ top: document.querySelector('.blog-container').offsetTop - 100, behavior: 'smooth' });
+                }
+            });
+        });
+    }
+
     // ===== GENERATE CATEGORY FILTERS =====
     function generateCategoryFilters() {
         const categories = ['all'];
@@ -217,15 +287,11 @@
                 buttons.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
 
-                const category = btn.dataset.category;
-
-                // Filter projects
-                if (category === 'all') {
-                    displayProjects(projects);
-                } else {
-                    const filtered = projects.filter(p => p.category && p.category.toLowerCase().trim() === category);
-                    displayProjects(filtered);
-                }
+                activeCategory = btn.dataset.category;
+                currentPage = 1;
+                
+                renderProjectCards();
+                renderPagination();
             });
         });
     }
@@ -238,7 +304,8 @@
             projects = data.projects;
             
             generateCategoryFilters();
-            displayProjects(projects);
+            renderProjectCards();
+            renderPagination();
             initProjectFilters();
         } catch (error) {
             console.error('Error loading projects:', error);
