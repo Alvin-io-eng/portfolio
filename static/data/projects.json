@@ -153,7 +153,7 @@
     {
       "id":16,
       "title": "Innovtion Hub Manager",
-      "description": "A web application that help manage a Hub space where users can book spaces & computers, manage their bookings and also manage the hub space as an admin.",
+      "description": "A web application that help manage a Hub space where users can book spaces.",
       "date":"2026",
       "category":"Web App", 
       "image": "./static/img/projects/hubManager.png",
