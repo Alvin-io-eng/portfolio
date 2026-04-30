@@ -21,16 +21,6 @@
       "codeLink": "https://github.com/Alvin-io-eng/shakeup-kitchen/"
     },
     {
-      "id": 3,
-      "title": "Three JS Portfolio",
-      "description": "A visually stunning portfolio website built with Three.js to showcase 3D graphics and interactive elements.",
-      "date":"2025",
-      "category": "Website",
-      "image": "./static/img/projects/threejs-portfolio.png",
-      "link": "https://threejs-techwebsite.vercel.app/",
-      "codeLink": "https://github.com/Alvin-io-eng/threejsTechwebsite/"
-    },
-    {
       "id": 4,
       "title": "Premier Motors",
       "description": "A basic car dealership website demonstrating vehicle listings and customer inquiries.",
