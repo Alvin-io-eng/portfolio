@@ -8,7 +8,7 @@
       "category":"Saas",
       "image": "./static/img/projects/aivana.png",
       "link": "https://aivanawebsite.vercel.app/",
-      "codeLink": "#"
+      "codeLink": "https://github.com/Alvin-io-eng/Aivana/"
     },
     {
       "id": 2,
@@ -18,7 +18,7 @@
       "category":"Website",
       "image": "./static/img/projects/shakeup-kitchen.png",
       "link": "https://shakeup-kitchen.vercel.app",
-      "codeLink": "#"
+      "codeLink": "https://github.com/Alvin-io-eng/shakeup-kitchen/"
     },
     {
       "id": 3,
@@ -28,7 +28,7 @@
       "category": "Website",
       "image": "./static/img/projects/threejs-portfolio.png",
       "link": "https://threejs-techwebsite.vercel.app/",
-      "codeLink": "#"
+      "codeLink": "https://github.com/Alvin-io-eng/threejsTechwebsite/"
     },
     {
       "id": 4,
@@ -38,7 +38,7 @@
       "category": "Web App",
       "image": "./static/img/projects/premier-motors.png",
       "link": "https://car-dealership-demo-zxkp.bolt.host/",
-      "codeLink": "#"
+      "codeLink": "https://github.com/Alvin-io-eng/Auto-hub/"
     },
     {
       "id":5,

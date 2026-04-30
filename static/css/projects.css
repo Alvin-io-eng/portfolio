@@ -246,20 +246,22 @@
             align-items: center;
             gap: 0.5rem;
             padding: 0.7rem 1.5rem;
-            border: 2px solid var(--primary-color);
+            border: 2px solid #ffffff;
             border-radius: 50px;
-            color: var(--primary-color);
+            color: #ffffff;
             font-weight: 600;
             font-size: 0.88rem;
             text-decoration: none;
             transition: var(--transition);
             transform: translateY(8px);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
         }
         .blog-card:hover .overlay-view-btn {
             transform: translateY(0);
         }
         .overlay-view-btn:hover {
-            background: var(--primary-color);
+            background: #ffffff;
             color: var(--bg-dark);
         }
         .overlay-view-btn.coming-soon {
@@ -267,6 +269,7 @@
             cursor: default;
             border-color: var(--text-muted);
             color: var(--text-muted);
+            background: transparent;
         }
         
         /* categories & filter - matching blog-categories */
