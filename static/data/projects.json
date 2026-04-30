@@ -49,6 +49,26 @@
       "image": "./static/img/projects/medify.png",
       "link": "https://medify-system-ten.vercel.app/",
       "codeLink": "#"
+    },
+    {
+      "id":6,
+      "title": "Mpesa API Integration",
+      "description": "Implementing both STK push and Callback so as to verify payment trasactions via Mpesa",
+      "date":"2025",
+      "category":"API", 
+      "image": "./static/img/projects/mpesa.jpeg",
+      "link": "https://github.com/Alvin-io-eng/mpesa/",
+      "codeLink": "https://github.com/Alvin-io-eng/mpesa/"
+    },
+    {
+      "id":7,
+      "title": "Personal Progress Tracking App",
+      "description": "Personal webapp tailor made to track my progress in followin a schedule/ timetable and also track my progress in learning a new skill",
+      "date":"2025",
+      "category":"Web App", 
+      "image": "./static/img/projects/mpesa.jpeg",
+      "link": "#",
+      "codeLink": "https://github.com/Alvin-io-eng/Personal-Progress-Tracking-app"
     }
   ]
 }
