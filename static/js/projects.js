@@ -134,7 +134,9 @@
         card.dataset.category = projectCategory;
 
         const linkHref = project.link && project.link !== '#' ? project.link : null;
+        const codeLinkHref = project.codeLink && project.codeLink !== '#' ? project.codeLink : null;
         const linkTarget = linkHref ? 'target="_blank" rel="noopener"' : '';
+        const codeLinkTarget = codeLinkHref ? 'target="_blank" rel="noopener"' : '';
 
         card.innerHTML = `
             <div class="project-image" style="position: relative; height: 220px; overflow: hidden;">
@@ -143,6 +145,10 @@
                     ${linkHref
                         ? `<a href="${project.link}" ${linkTarget} class="overlay-view-btn"><i class="fas fa-external-link-alt"></i> View Live</a>`
                         : `<span class="overlay-view-btn coming-soon"><i class="fas fa-clock"></i> Coming Soon</span>`
+                    }
+                    ${codeLinkHref
+                        ? `<a href="${project.codeLink}" ${codeLinkTarget} class="overlay-view-btn" style="margin-top: 45px;"><i class="fab fa-github"></i> View Code</a>`
+                        : `<span class="overlay-view-btn coming-soon" style="margin-top: 45px;"><i class="fab fa-github"></i> View Code</span>`
                     }
                 </div>
             </div>

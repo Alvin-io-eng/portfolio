@@ -365,7 +365,9 @@ function buildProjectCard(project) {
     card.className = 'project-card';
 
     const linkHref = project.link && project.link !== '#' ? project.link : null;
+    const codeLinkHref = project.codeLink && project.codeLink !== '#' ? project.codeLink : null;
     const linkTarget = linkHref ? 'target="_blank" rel="noopener"' : '';
+    const codeLinkTarget = codeLinkHref ? 'target="_blank" rel="noopener"' : '';
 
     card.innerHTML = `
         <div class="project-image" style="background: url('${project.image}') center/cover no-repeat, var(--gradient-1);">
@@ -373,6 +375,10 @@ function buildProjectCard(project) {
                 ${linkHref
                     ? `<a href="${project.link}" ${linkTarget} class="overlay-view-btn"><i class="fas fa-external-link-alt"></i> View Live</a>`
                     : `<span class="overlay-view-btn" style="opacity:0.5;cursor:default;">Coming Soon</span>`
+                }
+                ${codeLinkHref
+                    ? `<a href="${project.codeLink}" ${codeLinkTarget} class="overlay-view-btn" style="margin-top: 45px;"><i class="fab fa-github"></i> View Code</a>`
+                    : `<span class="overlay-view-btn" style="opacity:0.5;cursor:default;margin-top: 45px;"><i class="fab fa-github"></i> View Code</span>`
                 }
             </div>
         </div>
@@ -422,14 +428,24 @@ function displayProjectsCarousel(projects) {
                 <div class="picto" style="background-image: url('${project.image}')"></div>
                 <h1 style="color: ${projectColors[index] || '#80c3fd'}">${project.title}</h1>
                 <p>${project.description}</p>
-                ${project.link && project.link !== '#' 
-                    ? `<a href="${project.link}" target="_blank" rel="noopener" class="read-more" style="margin-top: 1rem; display: inline-flex; align-items: center; gap: 0.5rem; color: ${projectColors[index] || '#80c3fd'}; text-decoration: none; font-weight: 600;">
-                        <i class="fas fa-external-link-alt"></i> View Live
-                       </a>` 
-                    : `<span style="opacity: 0.5; cursor: default; margin-top: 1rem; display: inline-flex; align-items: center; gap: 0.5rem;">
-                        <i class="fas fa-clock"></i> Coming Soon
-                       </span>`
-                }
+                <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                    ${project.link && project.link !== '#' 
+                        ? `<a href="${project.link}" target="_blank" rel="noopener" class="read-more" style="display: inline-flex; align-items: center; gap: 0.5rem; color: ${projectColors[index] || '#80c3fd'}; text-decoration: none; font-weight: 600;">
+                            <i class="fas fa-external-link-alt"></i> View Live
+                           </a>` 
+                        : `<span style="opacity: 0.5; cursor: default; display: inline-flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-clock"></i> Coming Soon
+                           </span>`
+                    }
+                    ${project.codeLink && project.codeLink !== '#'
+                        ? `<a href="${project.codeLink}" target="_blank" rel="noopener" class="read-more" style="display: inline-flex; align-items: center; gap: 0.5rem; color: ${projectColors[index] || '#80c3fd'}; text-decoration: none; font-weight: 600;">
+                            <i class="fab fa-github"></i> View Code
+                           </a>`
+                        : `<span style="opacity: 0.5; cursor: default; display: inline-flex; align-items: center; gap: 0.5rem;">
+                            <i class="fab fa-github"></i> View Code
+                           </span>`
+                    }
+                </div>
             </div>
         `;
 
